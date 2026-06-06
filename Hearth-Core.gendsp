@@ -1,0 +1,667 @@
+{
+  "patcher": {
+    "fileversion": 1,
+    "appversion": {
+      "major": 10,
+      "minor": 0,
+      "revision": 0,
+      "architecture": "x64",
+      "modernui": 1
+    },
+    "classnamespace": "dsp.gen",
+    "rect": [
+      120,
+      120,
+      760,
+      560
+    ],
+    "gridonopen": 1,
+    "gridsize": [
+      15,
+      15
+    ],
+    "boxes": [
+      {
+        "box": {
+          "id": "gen-in-1",
+          "maxclass": "newobj",
+          "text": "in 1",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            "signal"
+          ],
+          "patching_rect": [
+            30,
+            42,
+            42,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-in-2",
+          "maxclass": "newobj",
+          "text": "in 2",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            "signal"
+          ],
+          "patching_rect": [
+            30,
+            82,
+            42,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "codebox-hearth",
+          "maxclass": "codebox",
+          "numinlets": 19,
+          "numoutlets": 2,
+          "patching_rect": [
+            100,
+            30,
+            560,
+            500
+          ],
+          "code": "// Hearth - warm, live-safe saturation core for gen~ / Max for Live.\n// Controls are normalized 0..1 unless otherwise noted.\n\nclip01(v) {\n    return min(max(v, 0), 1);\n}\n\ndbtoa_local(db) {\n    return pow(10, db * 0.05);\n}\n\ncoef_ms(ms, sr) {\n    return exp(-1 / (max(ms, 0.01) * 0.001 * sr));\n}\n\ncoef_hz(hz, sr) {\n    return exp(-6.283185307179586 * max(hz, 1) / sr);\n}\n\nsmooth_asym(x, prev, ca, cr) {\n    rising = x > prev;\n    c = rising * ca + (1 - rising) * cr;\n    return x + c * (prev - x);\n}\n\nsoft_atan(x, k) {\n    return atan(k * x) / atan(k);\n}\n\nsoft_atan_int(x, k) {\n    kk = k * k;\n    return (x * atan(k * x) - log(1 + kk * x * x) / (2 * k)) / atan(k);\n}\n\nadaa_atan_1(x, px, k) {\n    d = x - px;\n    near = abs(d) < 0.00001;\n    den = d + (d >= 0) * 0.000000000001 - (d < 0) * 0.000000000001;\n    slope = (soft_atan_int(x, k) - soft_atan_int(px, k)) / den;\n    fallback = soft_atan((x + px) * 0.5, k);\n    return near * fallback + (1 - near) * slope;\n}\n\nnoise_step(s) {\n    // Deterministic low-cost drift/noise source; intentionally not cryptographic.\n    raw = s * 43758.5453123 + 0.12345;\n    n = raw - floor(raw);\n    return n;\n}\n\nHistory dcL(0);\nHistory dcR(0);\nHistory envFast(0);\nHistory envSlow(0);\nHistory envInLong(0);\nHistory envOutLong(0);\nHistory trimGain(1);\n\nHistory anaLow(0);\nHistory anaHighLP(0);\nHistory anaBright(0);\nHistory anaHMlp1(0);\nHistory anaHMlp2(0);\nHistory roughFast(0);\nHistory roughSlow(0);\nHistory guard(0);\n\nHistory lm140L(0);\nHistory lm700L(0);\nHistory lm140R(0);\nHistory lm700R(0);\nHistory presL(0);\nHistory presR(0);\nHistory postPresL(0);\nHistory postPresR(0);\n\nHistory prevTubeL(0);\nHistory prevTubeR(0);\nHistory fluxMemL(0);\nHistory fluxMemR(0);\nHistory prevFluxInL(0);\nHistory prevFluxInR(0);\nHistory bloomEnv(0);\nHistory patinaState(0.17623);\n\nctlInput = in3;\nctlHearth = in4;\nctlBody = in5;          // dB, -6..+6\nctlVelvet = in6;\nctlBloom = in7;\nctlFlux = in8;\nctlBias = in9;          // -0.25..+0.25\nctlAdapt = in10;\nctlDetail = in11;\nctlDynamics = in12;\nctlRecovery = in13;     // ms, 20..600\nctlStereoProtect = in14;\nctlMix = in15;\nctlOutput = in16;       // dB, -24..+24\nctlQuality = in17;      // 0 Eco, 1 Live, 2 High\nctlAutoTrim = in18;\nctlPatina = in19;\n\nsr = max(samplerate, 1);\nq = min(max(ctlQuality, 0), 2);\nqNorm = q * 0.5;\n\nhAmt = clip01(ctlHearth);\nvelAmt = clip01(ctlVelvet);\nbloomAmt = clip01(ctlBloom);\nfluxAmt = clip01(ctlFlux);\nadaptAmt = clip01(ctlAdapt);\ndetailAmt = clip01(ctlDetail);\ndynAmt = clip01(ctlDynamics);\nspAmt = clip01(ctlStereoProtect);\nmixAmt = clip01(ctlMix);\nautoAmt = clip01(ctlAutoTrim);\npatinaAmt = clip01(ctlPatina) * 0.1;\n\ninGain = dbtoa_local(ctlInput);\noutGain = dbtoa_local(ctlOutput);\n\ndcC = coef_hz(18, sr);\ndcL = in1 + dcC * (dcL - in1);\ndcR = in2 + dcC * (dcR - in2);\nxL = (in1 - dcL) * inGain;\nxR = (in2 - dcR) * inGain;\ndryL = xL;\ndryR = xR;\ndryMid = (dryL + dryR) * 0.5;\ndrySide = (dryL - dryR) * 0.5;\n\nmono = (xL + xR) * 0.5;\nabsMono = abs(mono);\nenvFast = smooth_asym(absMono, envFast, coef_ms(4, sr), coef_ms(55, sr));\nenvSlow = smooth_asym(absMono, envSlow, coef_ms(70, sr), coef_ms(max(ctlRecovery, 20), sr));\ntransient = clip01(max(envFast - envSlow, 0) / (envFast + 0.0005));\nenvInLong = smooth_asym(absMono, envInLong, coef_ms(180, sr), coef_ms(900, sr));\n\nlowC = coef_hz(650, sr);\nanaLow = mono + lowC * (anaLow - mono);\nhighC = coef_hz(2800, sr);\nanaHighLP = mono + highC * (anaHighLP - mono);\nhigh = mono - anaHighLP;\nanaBright = smooth_asym(abs(high), anaBright, coef_ms(18, sr), coef_ms(220, sr));\nbrightness = clip01(anaBright / (abs(anaLow) + anaBright + 0.0005));\n\nhm1C = coef_hz(1600, sr);\nhm2C = coef_hz(5200, sr);\nanaHMlp1 = mono + hm1C * (anaHMlp1 - mono);\nanaHMlp2 = mono + hm2C * (anaHMlp2 - mono);\nhighMid = anaHMlp2 - anaHMlp1;\nhmAbs = abs(highMid);\nroughFast = smooth_asym(hmAbs, roughFast, coef_ms(6, sr), coef_ms(32, sr));\nroughSlow = smooth_asym(hmAbs, roughSlow, coef_ms(80, sr), coef_ms(260, sr));\nroughness = clip01(abs(roughFast - roughSlow) / (roughSlow + 0.0005));\n\nguardTarget = clip01(adaptAmt * (max(brightness - 0.42, 0) * 1.75 + max(roughness - 0.18, 0) * 2.25));\nguard = guardTarget + coef_ms(120, sr) * (guard - guardTarget);\n\nbodyDb = min(max(ctlBody, -6), 6);\nbodyDrive = dbtoa_local(bodyDb) - 1;\nshapeK = 1.15 + hAmt * 3.25 + qNorm * 0.55;\ndrive = dbtoa_local(1.5 + hAmt * 19.5 + dynAmt * envSlow * 5.5);\ndrive = drive * (1 - guard * 0.30);\nbaseBias = min(max(ctlBias, -0.25), 0.25);\ndynBias = baseBias + adaptAmt * (transient * 0.045 - guard * 0.055);\ndynBias = min(max(dynBias, -0.35), 0.35);\n\n// Compensated low-mid emphasis and restrained presence before the nonlinear lanes.\nlm140L = xL + coef_hz(140, sr) * (lm140L - xL);\nlm700L = xL + coef_hz(700, sr) * (lm700L - xL);\nlm140R = xR + coef_hz(140, sr) * (lm140R - xR);\nlm700R = xR + coef_hz(700, sr) * (lm700R - xR);\nlowMidL = lm700L - lm140L;\nlowMidR = lm700R - lm140R;\n\npresL = xL + coef_hz(2500, sr) * (presL - xL);\npresR = xR + coef_hz(2500, sr) * (presR - xR);\npresenceL = xL - presL;\npresenceR = xR - presR;\n\nemphDepth = (0.15 + hAmt * 0.32) * (1 - guard * 0.35);\npreL = xL + lowMidL * bodyDrive * emphDepth - presenceL * velAmt * guard * 0.22;\npreR = xR + lowMidR * bodyDrive * emphDepth - presenceR * velAmt * guard * 0.22;\n\nuL = preL * drive + dynBias;\nuR = preR * drive + dynBias;\n\nsegL = uL - prevTubeL;\nsegR = uR - prevTubeR;\nuL25 = prevTubeL + segL * 0.25;\nuL50 = prevTubeL + segL * 0.50;\nuL75 = prevTubeL + segL * 0.75;\nuR25 = prevTubeR + segR * 0.25;\nuR50 = prevTubeR + segR * 0.50;\nuR75 = prevTubeR + segR * 0.75;\n\ntubeL1 = adaa_atan_1(uL, prevTubeL, shapeK);\ntubeR1 = adaa_atan_1(uR, prevTubeR, shapeK);\ntubeL2 = (adaa_atan_1(uL50, prevTubeL, shapeK) + adaa_atan_1(uL, uL50, shapeK)) * 0.5;\ntubeR2 = (adaa_atan_1(uR50, prevTubeR, shapeK) + adaa_atan_1(uR, uR50, shapeK)) * 0.5;\ntubeL4 = (adaa_atan_1(uL25, prevTubeL, shapeK) + adaa_atan_1(uL50, uL25, shapeK) + adaa_atan_1(uL75, uL50, shapeK) + adaa_atan_1(uL, uL75, shapeK)) * 0.25;\ntubeR4 = (adaa_atan_1(uR25, prevTubeR, shapeK) + adaa_atan_1(uR50, uR25, shapeK) + adaa_atan_1(uR75, uR50, shapeK) + adaa_atan_1(uR, uR75, shapeK)) * 0.25;\nuse2 = q >= 1;\nuse4 = q >= 2;\ntubeL = (tubeL1 * (1 - use2) + tubeL2 * use2 * (1 - use4) + tubeL4 * use4) - soft_atan(dynBias, shapeK);\ntubeR = (tubeR1 * (1 - use2) + tubeR2 * use2 * (1 - use4) + tubeR4 * use4) - soft_atan(dynBias, shapeK);\nprevTubeL = uL;\nprevTubeR = uR;\ntubeComp = 1 / (1 + drive * 0.115);\ntubeL = tubeL * tubeComp;\ntubeR = tubeR * tubeComp;\n\n// Quasi-hysteretic flux lane: rising and returning paths use different rates.\nfluxInL = preL * (1 + hAmt * 1.4);\nfluxInR = preR * (1 + hAmt * 1.4);\nrec = min(max(ctlRecovery, 20), 600);\nfluxAttack = 1 - coef_ms(10 + rec * 0.04, sr);\nfluxReturn = 1 - coef_ms(45 + rec * 0.55, sr);\ndirL = fluxInL > prevFluxInL;\ndirR = fluxInR > prevFluxInR;\naFluxL = dirL * fluxAttack + (1 - dirL) * fluxReturn;\naFluxR = dirR * fluxAttack + (1 - dirR) * fluxReturn;\nfluxMemL = fluxMemL + aFluxL * (fluxInL - fluxMemL);\nfluxMemR = fluxMemR + aFluxR * (fluxInR - fluxMemR);\nprevFluxInL = fluxInL;\nprevFluxInR = fluxInR;\nloopArea = fluxAmt * (0.18 + hAmt * 0.28) * (1 - guard * 0.18);\nfluxL = soft_atan(fluxInL + fluxMemL * loopArea, 1.7 + hAmt) - fluxMemL * loopArea * 0.36;\nfluxR = soft_atan(fluxInR + fluxMemR * loopArea, 1.7 + hAmt) - fluxMemR * loopArea * 0.36;\n\n// Transient bloom lane: attack-local, band-limited parallel density.\nbloomTarget = transient * bloomAmt * (1 - guard * 0.25);\nbloomEnv = bloomTarget + coef_ms(80 + rec * 0.22, sr) * (bloomEnv - bloomTarget);\nbloomDrive = 1.4 + hAmt * 2.2 + bloomAmt * 2.6;\nbloomL = soft_atan((lowMidL + presenceL * 0.22) * bloomDrive, 1.8) * bloomEnv;\nbloomR = soft_atan((lowMidR + presenceR * 0.22) * bloomDrive, 1.8) * bloomEnv;\n\nwetCoreL = tubeL * (0.84 - fluxAmt * 0.22) + fluxL * fluxAmt * 0.62 + bloomL * 0.45;\nwetCoreR = tubeR * (0.84 - fluxAmt * 0.22) + fluxR * fluxAmt * 0.62 + bloomR * 0.45;\n\n// Complementary de-emphasis and velvet filtering after harmonics are generated.\npostPresL = wetCoreL + coef_hz(2600, sr) * (postPresL - wetCoreL);\npostPresR = wetCoreR + coef_hz(2600, sr) * (postPresR - wetCoreR);\nwetPresenceL = wetCoreL - postPresL;\nwetPresenceR = wetCoreR - postPresR;\ndeEmph = velAmt * (0.16 + guard * 0.36);\nwetL = wetCoreL - wetPresenceL * deEmph + lowMidL * bodyDrive * 0.055;\nwetR = wetCoreR - wetPresenceR * deEmph + lowMidR * bodyDrive * 0.055;\n\ndetailGain = detailAmt * (0.05 + 0.18 * (1 - velAmt));\nwetL = wetL + presenceL * detailGain;\nwetR = wetR + presenceR * detailGain;\n\n// Stereo protect: keep the side channel from being driven harder than the center.\nwetMid = (wetL + wetR) * 0.5;\nwetSide = (wetL - wetR) * 0.5;\nsideKeep = 1 - spAmt * (0.10 + hAmt * 0.18 + guard * 0.14);\nwetSide = wetSide * sideKeep + drySide * spAmt * 0.08;\nwetL = wetMid + wetSide;\nwetR = wetMid - wetSide;\n\nmixedL = dryL + (wetL - dryL) * mixAmt;\nmixedR = dryR + (wetR - dryR) * mixAmt;\n\noutAbs = max(abs(mixedL), abs(mixedR));\nenvOutLong = smooth_asym(outAbs, envOutLong, coef_ms(180, sr), coef_ms(900, sr));\ntrimTarget = min(max(envInLong / (envOutLong + 0.0005), 0.35), 2.5);\ntrimGain = (trimTarget + coef_ms(260, sr) * (trimGain - trimTarget)) * autoAmt + (1 - autoAmt);\n\npatinaState = noise_step(patinaState + absMono * 0.000013 + 0.000071);\npatinaNoise = (patinaState * 2 - 1) * patinaAmt * 0.00075;\n\noutL = (mixedL * trimGain + patinaNoise) * outGain;\noutR = (mixedR * trimGain - patinaNoise) * outGain;\n\n// Last-resort live safety. This is intentionally gentle until the signal is hot.\nout1 = soft_atan(outL, 3.2);\nout2 = soft_atan(outR, 3.2);\n"
+        }
+      },
+      {
+        "box": {
+          "id": "gen-out-1",
+          "maxclass": "newobj",
+          "text": "out 1",
+          "numinlets": 1,
+          "numoutlets": 0,
+          "patching_rect": [
+            690,
+            42,
+            46,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-out-2",
+          "maxclass": "newobj",
+          "text": "out 2",
+          "numinlets": 1,
+          "numoutlets": 0,
+          "patching_rect": [
+            690,
+            82,
+            46,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-input",
+          "maxclass": "newobj",
+          "text": "param input 0",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            30,
+            150,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-hearth",
+          "maxclass": "newobj",
+          "text": "param hearth 0.35",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            200,
+            150,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-body",
+          "maxclass": "newobj",
+          "text": "param body 1.5",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            370,
+            150,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-velvet",
+          "maxclass": "newobj",
+          "text": "param velvet 0.28",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            30,
+            184,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-bloom",
+          "maxclass": "newobj",
+          "text": "param bloom 0.24",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            200,
+            184,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-flux",
+          "maxclass": "newobj",
+          "text": "param flux 0.18",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            370,
+            184,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-bias",
+          "maxclass": "newobj",
+          "text": "param bias 0.04",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            30,
+            218,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-adapt",
+          "maxclass": "newobj",
+          "text": "param adapt 0.62",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            200,
+            218,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-detail",
+          "maxclass": "newobj",
+          "text": "param detail 0.58",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            370,
+            218,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-dynamics",
+          "maxclass": "newobj",
+          "text": "param dynamics 0.42",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            30,
+            252,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-recovery",
+          "maxclass": "newobj",
+          "text": "param recovery 140",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            200,
+            252,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-stereoProtect",
+          "maxclass": "newobj",
+          "text": "param stereoProtect 0.7",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            370,
+            252,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-mix",
+          "maxclass": "newobj",
+          "text": "param mix 1",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            30,
+            286,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-output",
+          "maxclass": "newobj",
+          "text": "param output 0",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            200,
+            286,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-quality",
+          "maxclass": "newobj",
+          "text": "param quality 1",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            370,
+            286,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-autoTrim",
+          "maxclass": "newobj",
+          "text": "param autoTrim 1",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            30,
+            320,
+            145,
+            22
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "gen-param-patina",
+          "maxclass": "newobj",
+          "text": "param patina 0",
+          "numinlets": 0,
+          "numoutlets": 1,
+          "outlettype": [
+            ""
+          ],
+          "patching_rect": [
+            200,
+            320,
+            145,
+            22
+          ]
+        }
+      }
+    ],
+    "lines": [
+      {
+        "patchline": {
+          "source": [
+            "gen-in-1",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-in-2",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            1
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "codebox-hearth",
+            0
+          ],
+          "destination": [
+            "gen-out-1",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "codebox-hearth",
+            1
+          ],
+          "destination": [
+            "gen-out-2",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-input",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            2
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-hearth",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            3
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-body",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            4
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-velvet",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            5
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-bloom",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            6
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-flux",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            7
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-bias",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            8
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-adapt",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            9
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-detail",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            10
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-dynamics",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            11
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-recovery",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            12
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-stereoProtect",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            13
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-mix",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            14
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-output",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            15
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-quality",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            16
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-autoTrim",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            17
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "gen-param-patina",
+            0
+          ],
+          "destination": [
+            "codebox-hearth",
+            18
+          ]
+        }
+      }
+    ]
+  }
+}

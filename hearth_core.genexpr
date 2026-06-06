@@ -1,0 +1,280 @@
+// Hearth - warm, live-safe saturation core for gen~ / Max for Live.
+// Controls are normalized 0..1 unless otherwise noted.
+
+clip01(v) {
+    return min(max(v, 0), 1);
+}
+
+dbtoa_local(db) {
+    return pow(10, db * 0.05);
+}
+
+coef_ms(ms, sr) {
+    return exp(-1 / (max(ms, 0.01) * 0.001 * sr));
+}
+
+coef_hz(hz, sr) {
+    return exp(-6.283185307179586 * max(hz, 1) / sr);
+}
+
+smooth_asym(x, prev, ca, cr) {
+    rising = x > prev;
+    c = rising * ca + (1 - rising) * cr;
+    return x + c * (prev - x);
+}
+
+soft_atan(x, k) {
+    return atan(k * x) / atan(k);
+}
+
+soft_atan_int(x, k) {
+    kk = k * k;
+    return (x * atan(k * x) - log(1 + kk * x * x) / (2 * k)) / atan(k);
+}
+
+adaa_atan_1(x, px, k) {
+    d = x - px;
+    near = abs(d) < 0.00001;
+    den = d + (d >= 0) * 0.000000000001 - (d < 0) * 0.000000000001;
+    slope = (soft_atan_int(x, k) - soft_atan_int(px, k)) / den;
+    fallback = soft_atan((x + px) * 0.5, k);
+    return near * fallback + (1 - near) * slope;
+}
+
+noise_step(s) {
+    // Deterministic low-cost drift/noise source; intentionally not cryptographic.
+    raw = s * 43758.5453123 + 0.12345;
+    n = raw - floor(raw);
+    return n;
+}
+
+History dcL(0);
+History dcR(0);
+History envFast(0);
+History envSlow(0);
+History envInLong(0);
+History envOutLong(0);
+History trimGain(1);
+
+History anaLow(0);
+History anaHighLP(0);
+History anaBright(0);
+History anaHMlp1(0);
+History anaHMlp2(0);
+History roughFast(0);
+History roughSlow(0);
+History guard(0);
+
+History lm140L(0);
+History lm700L(0);
+History lm140R(0);
+History lm700R(0);
+History presL(0);
+History presR(0);
+History postPresL(0);
+History postPresR(0);
+
+History prevTubeL(0);
+History prevTubeR(0);
+History fluxMemL(0);
+History fluxMemR(0);
+History prevFluxInL(0);
+History prevFluxInR(0);
+History bloomEnv(0);
+History patinaState(0.17623);
+
+ctlInput = in3;
+ctlHearth = in4;
+ctlBody = in5;          // dB, -6..+6
+ctlVelvet = in6;
+ctlBloom = in7;
+ctlFlux = in8;
+ctlBias = in9;          // -0.25..+0.25
+ctlAdapt = in10;
+ctlDetail = in11;
+ctlDynamics = in12;
+ctlRecovery = in13;     // ms, 20..600
+ctlStereoProtect = in14;
+ctlMix = in15;
+ctlOutput = in16;       // dB, -24..+24
+ctlQuality = in17;      // 0 Eco, 1 Live, 2 High
+ctlAutoTrim = in18;
+ctlPatina = in19;
+
+sr = max(samplerate, 1);
+q = min(max(ctlQuality, 0), 2);
+qNorm = q * 0.5;
+
+hAmt = clip01(ctlHearth);
+velAmt = clip01(ctlVelvet);
+bloomAmt = clip01(ctlBloom);
+fluxAmt = clip01(ctlFlux);
+adaptAmt = clip01(ctlAdapt);
+detailAmt = clip01(ctlDetail);
+dynAmt = clip01(ctlDynamics);
+spAmt = clip01(ctlStereoProtect);
+mixAmt = clip01(ctlMix);
+autoAmt = clip01(ctlAutoTrim);
+patinaAmt = clip01(ctlPatina) * 0.1;
+
+inGain = dbtoa_local(ctlInput);
+outGain = dbtoa_local(ctlOutput);
+
+dcC = coef_hz(18, sr);
+dcL = in1 + dcC * (dcL - in1);
+dcR = in2 + dcC * (dcR - in2);
+xL = (in1 - dcL) * inGain;
+xR = (in2 - dcR) * inGain;
+dryL = xL;
+dryR = xR;
+dryMid = (dryL + dryR) * 0.5;
+drySide = (dryL - dryR) * 0.5;
+
+mono = (xL + xR) * 0.5;
+absMono = abs(mono);
+envFast = smooth_asym(absMono, envFast, coef_ms(4, sr), coef_ms(55, sr));
+envSlow = smooth_asym(absMono, envSlow, coef_ms(70, sr), coef_ms(max(ctlRecovery, 20), sr));
+transient = clip01(max(envFast - envSlow, 0) / (envFast + 0.0005));
+envInLong = smooth_asym(absMono, envInLong, coef_ms(180, sr), coef_ms(900, sr));
+
+lowC = coef_hz(650, sr);
+anaLow = mono + lowC * (anaLow - mono);
+highC = coef_hz(2800, sr);
+anaHighLP = mono + highC * (anaHighLP - mono);
+high = mono - anaHighLP;
+anaBright = smooth_asym(abs(high), anaBright, coef_ms(18, sr), coef_ms(220, sr));
+brightness = clip01(anaBright / (abs(anaLow) + anaBright + 0.0005));
+
+hm1C = coef_hz(1600, sr);
+hm2C = coef_hz(5200, sr);
+anaHMlp1 = mono + hm1C * (anaHMlp1 - mono);
+anaHMlp2 = mono + hm2C * (anaHMlp2 - mono);
+highMid = anaHMlp2 - anaHMlp1;
+hmAbs = abs(highMid);
+roughFast = smooth_asym(hmAbs, roughFast, coef_ms(6, sr), coef_ms(32, sr));
+roughSlow = smooth_asym(hmAbs, roughSlow, coef_ms(80, sr), coef_ms(260, sr));
+roughness = clip01(abs(roughFast - roughSlow) / (roughSlow + 0.0005));
+
+guardTarget = clip01(adaptAmt * (max(brightness - 0.42, 0) * 1.75 + max(roughness - 0.18, 0) * 2.25));
+guard = guardTarget + coef_ms(120, sr) * (guard - guardTarget);
+
+bodyDb = min(max(ctlBody, -6), 6);
+bodyDrive = dbtoa_local(bodyDb) - 1;
+shapeK = 1.15 + hAmt * 3.25 + qNorm * 0.55;
+drive = dbtoa_local(1.5 + hAmt * 19.5 + dynAmt * envSlow * 5.5);
+drive = drive * (1 - guard * 0.30);
+baseBias = min(max(ctlBias, -0.25), 0.25);
+dynBias = baseBias + adaptAmt * (transient * 0.045 - guard * 0.055);
+dynBias = min(max(dynBias, -0.35), 0.35);
+
+// Compensated low-mid emphasis and restrained presence before the nonlinear lanes.
+lm140L = xL + coef_hz(140, sr) * (lm140L - xL);
+lm700L = xL + coef_hz(700, sr) * (lm700L - xL);
+lm140R = xR + coef_hz(140, sr) * (lm140R - xR);
+lm700R = xR + coef_hz(700, sr) * (lm700R - xR);
+lowMidL = lm700L - lm140L;
+lowMidR = lm700R - lm140R;
+
+presL = xL + coef_hz(2500, sr) * (presL - xL);
+presR = xR + coef_hz(2500, sr) * (presR - xR);
+presenceL = xL - presL;
+presenceR = xR - presR;
+
+emphDepth = (0.15 + hAmt * 0.32) * (1 - guard * 0.35);
+preL = xL + lowMidL * bodyDrive * emphDepth - presenceL * velAmt * guard * 0.22;
+preR = xR + lowMidR * bodyDrive * emphDepth - presenceR * velAmt * guard * 0.22;
+
+uL = preL * drive + dynBias;
+uR = preR * drive + dynBias;
+
+segL = uL - prevTubeL;
+segR = uR - prevTubeR;
+uL25 = prevTubeL + segL * 0.25;
+uL50 = prevTubeL + segL * 0.50;
+uL75 = prevTubeL + segL * 0.75;
+uR25 = prevTubeR + segR * 0.25;
+uR50 = prevTubeR + segR * 0.50;
+uR75 = prevTubeR + segR * 0.75;
+
+tubeL1 = adaa_atan_1(uL, prevTubeL, shapeK);
+tubeR1 = adaa_atan_1(uR, prevTubeR, shapeK);
+tubeL2 = (adaa_atan_1(uL50, prevTubeL, shapeK) + adaa_atan_1(uL, uL50, shapeK)) * 0.5;
+tubeR2 = (adaa_atan_1(uR50, prevTubeR, shapeK) + adaa_atan_1(uR, uR50, shapeK)) * 0.5;
+tubeL4 = (adaa_atan_1(uL25, prevTubeL, shapeK) + adaa_atan_1(uL50, uL25, shapeK) + adaa_atan_1(uL75, uL50, shapeK) + adaa_atan_1(uL, uL75, shapeK)) * 0.25;
+tubeR4 = (adaa_atan_1(uR25, prevTubeR, shapeK) + adaa_atan_1(uR50, uR25, shapeK) + adaa_atan_1(uR75, uR50, shapeK) + adaa_atan_1(uR, uR75, shapeK)) * 0.25;
+use2 = q >= 1;
+use4 = q >= 2;
+tubeL = (tubeL1 * (1 - use2) + tubeL2 * use2 * (1 - use4) + tubeL4 * use4) - soft_atan(dynBias, shapeK);
+tubeR = (tubeR1 * (1 - use2) + tubeR2 * use2 * (1 - use4) + tubeR4 * use4) - soft_atan(dynBias, shapeK);
+prevTubeL = uL;
+prevTubeR = uR;
+tubeComp = 1 / (1 + drive * 0.115);
+tubeL = tubeL * tubeComp;
+tubeR = tubeR * tubeComp;
+
+// Quasi-hysteretic flux lane: rising and returning paths use different rates.
+fluxInL = preL * (1 + hAmt * 1.4);
+fluxInR = preR * (1 + hAmt * 1.4);
+rec = min(max(ctlRecovery, 20), 600);
+fluxAttack = 1 - coef_ms(10 + rec * 0.04, sr);
+fluxReturn = 1 - coef_ms(45 + rec * 0.55, sr);
+dirL = fluxInL > prevFluxInL;
+dirR = fluxInR > prevFluxInR;
+aFluxL = dirL * fluxAttack + (1 - dirL) * fluxReturn;
+aFluxR = dirR * fluxAttack + (1 - dirR) * fluxReturn;
+fluxMemL = fluxMemL + aFluxL * (fluxInL - fluxMemL);
+fluxMemR = fluxMemR + aFluxR * (fluxInR - fluxMemR);
+prevFluxInL = fluxInL;
+prevFluxInR = fluxInR;
+loopArea = fluxAmt * (0.18 + hAmt * 0.28) * (1 - guard * 0.18);
+fluxL = soft_atan(fluxInL + fluxMemL * loopArea, 1.7 + hAmt) - fluxMemL * loopArea * 0.36;
+fluxR = soft_atan(fluxInR + fluxMemR * loopArea, 1.7 + hAmt) - fluxMemR * loopArea * 0.36;
+
+// Transient bloom lane: attack-local, band-limited parallel density.
+bloomTarget = transient * bloomAmt * (1 - guard * 0.25);
+bloomEnv = bloomTarget + coef_ms(80 + rec * 0.22, sr) * (bloomEnv - bloomTarget);
+bloomDrive = 1.4 + hAmt * 2.2 + bloomAmt * 2.6;
+bloomL = soft_atan((lowMidL + presenceL * 0.22) * bloomDrive, 1.8) * bloomEnv;
+bloomR = soft_atan((lowMidR + presenceR * 0.22) * bloomDrive, 1.8) * bloomEnv;
+
+wetCoreL = tubeL * (0.84 - fluxAmt * 0.22) + fluxL * fluxAmt * 0.62 + bloomL * 0.45;
+wetCoreR = tubeR * (0.84 - fluxAmt * 0.22) + fluxR * fluxAmt * 0.62 + bloomR * 0.45;
+
+// Complementary de-emphasis and velvet filtering after harmonics are generated.
+postPresL = wetCoreL + coef_hz(2600, sr) * (postPresL - wetCoreL);
+postPresR = wetCoreR + coef_hz(2600, sr) * (postPresR - wetCoreR);
+wetPresenceL = wetCoreL - postPresL;
+wetPresenceR = wetCoreR - postPresR;
+deEmph = velAmt * (0.16 + guard * 0.36);
+wetL = wetCoreL - wetPresenceL * deEmph + lowMidL * bodyDrive * 0.055;
+wetR = wetCoreR - wetPresenceR * deEmph + lowMidR * bodyDrive * 0.055;
+
+detailGain = detailAmt * (0.05 + 0.18 * (1 - velAmt));
+wetL = wetL + presenceL * detailGain;
+wetR = wetR + presenceR * detailGain;
+
+// Stereo protect: keep the side channel from being driven harder than the center.
+wetMid = (wetL + wetR) * 0.5;
+wetSide = (wetL - wetR) * 0.5;
+sideKeep = 1 - spAmt * (0.10 + hAmt * 0.18 + guard * 0.14);
+wetSide = wetSide * sideKeep + drySide * spAmt * 0.08;
+wetL = wetMid + wetSide;
+wetR = wetMid - wetSide;
+
+mixedL = dryL + (wetL - dryL) * mixAmt;
+mixedR = dryR + (wetR - dryR) * mixAmt;
+
+outAbs = max(abs(mixedL), abs(mixedR));
+envOutLong = smooth_asym(outAbs, envOutLong, coef_ms(180, sr), coef_ms(900, sr));
+trimTarget = min(max(envInLong / (envOutLong + 0.0005), 0.35), 2.5);
+trimGain = (trimTarget + coef_ms(260, sr) * (trimGain - trimTarget)) * autoAmt + (1 - autoAmt);
+
+patinaState = noise_step(patinaState + absMono * 0.000013 + 0.000071);
+patinaNoise = (patinaState * 2 - 1) * patinaAmt * 0.00075;
+
+outL = (mixedL * trimGain + patinaNoise) * outGain;
+outR = (mixedR * trimGain - patinaNoise) * outGain;
+
+// Last-resort live safety. This is intentionally gentle until the signal is hot.
+out1 = soft_atan(outL, 3.2);
+out2 = soft_atan(outR, 3.2);
