@@ -193,6 +193,8 @@ add({
   patching_rect: [20, 500, 740, 170],
   presentation: 1,
   presentation_rect: [0, 0, 770, 170],
+  background: 1,
+  ignoreclick: 1,
   bgcolor: [0.105, 0.095, 0.082, 1],
   bordercolor: [0.18, 0.15, 0.12, 1],
 });
@@ -280,6 +282,26 @@ add({
   text: "Save this patch as a Max Audio Effect (.amxd). Keep Hearth-Core.gendsp beside it.",
   patching_rect: [32, 46, 530, 22],
 });
+
+const presentationLoad = add({
+  id: id(),
+  maxclass: "newobj",
+  text: "loadmess presentation 1",
+  numinlets: 1,
+  numoutlets: 1,
+  outlettype: [""],
+  patching_rect: [32, 72, 140, 22],
+});
+const thispatcher = add({
+  id: id(),
+  maxclass: "newobj",
+  text: "thispatcher",
+  numinlets: 1,
+  numoutlets: 2,
+  outlettype: ["", ""],
+  patching_rect: [180, 72, 84, 22],
+});
+connect(presentationLoad, 0, thispatcher, 0);
 
 const controls = [
   ["hearth", "Hearth", 0, 100, 35, "0. 1."],
@@ -403,6 +425,7 @@ const maxpat = {
     rect: [80, 80, 770, 190],
     bgcolor: [0.08, 0.075, 0.07, 1],
     openinpresentation: 1,
+    devicewidth: 770,
     gridonopen: 1,
     gridsize: [15, 15],
     boxes,
