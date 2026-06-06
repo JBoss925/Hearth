@@ -137,6 +137,105 @@ const add = (box) => {
 const connect = (source, outlet, dest, inlet) => {
   lines.push({ patchline: { source: [source, outlet], destination: [dest, inlet] } });
 };
+const uiOrder = [
+  "input",
+  "hearth",
+  "body",
+  "bias",
+  "velvet",
+  "detail",
+  "dynamics",
+  "recovery",
+  "output",
+  "bloom",
+  "flux",
+  "adapt",
+  "stereoProtect",
+  "mix",
+  "quality",
+  "autoTrim",
+  "patina",
+];
+const uiLabels = {
+  input: "Input",
+  hearth: "Hearth",
+  body: "Body",
+  bias: "Bias",
+  velvet: "Velvet",
+  detail: "Detail",
+  dynamics: "Dyn",
+  recovery: "Recover",
+  output: "Output",
+  bloom: "Bloom",
+  flux: "Flux",
+  adapt: "Adapt",
+  stereoProtect: "Stereo",
+  mix: "Mix",
+  quality: "Quality",
+  autoTrim: "Auto",
+  patina: "Patina",
+};
+const presentationFor = (param) => {
+  const i = uiOrder.indexOf(param);
+  const row = i >= 9 ? 1 : 0;
+  const col = row ? i - 9 : i;
+  const startX = row ? 164 : 132;
+  const step = row ? 72 : 66;
+  return {
+    dial: [startX + col * step, row ? 96 : 31, 42, 48],
+    label: [startX + col * step - 8, row ? 148 : 83, 58, 14],
+  };
+};
+
+add({
+  id: id(),
+  maxclass: "panel",
+  patching_rect: [20, 500, 740, 170],
+  presentation: 1,
+  presentation_rect: [0, 0, 770, 170],
+  bgcolor: [0.105, 0.095, 0.082, 1],
+  bordercolor: [0.18, 0.15, 0.12, 1],
+});
+add({
+  id: id(),
+  maxclass: "comment",
+  text: "HEARTH",
+  patching_rect: [35, 505, 100, 24],
+  presentation: 1,
+  presentation_rect: [18, 23, 98, 24],
+  fontsize: 18,
+  textcolor: [1, 0.72, 0.43, 1],
+});
+add({
+  id: id(),
+  maxclass: "comment",
+  text: "warm adaptive saturation",
+  patching_rect: [35, 531, 165, 18],
+  presentation: 1,
+  presentation_rect: [18, 49, 118, 34],
+  fontsize: 10,
+  textcolor: [0.78, 0.69, 0.58, 1],
+});
+add({
+  id: id(),
+  maxclass: "comment",
+  text: "TONE",
+  patching_rect: [35, 555, 80, 14],
+  presentation: 1,
+  presentation_rect: [18, 94, 70, 14],
+  fontsize: 9,
+  textcolor: [0.52, 0.77, 0.70, 1],
+});
+add({
+  id: id(),
+  maxclass: "comment",
+  text: "MOTION",
+  patching_rect: [35, 573, 80, 14],
+  presentation: 1,
+  presentation_rect: [18, 114, 70, 14],
+  fontsize: 9,
+  textcolor: [0.72, 0.62, 0.88, 1],
+});
 
 const plugin = add({
   id: id(),
@@ -207,12 +306,17 @@ controls.forEach(([param, label, min, max, initial, scale], i) => {
   const row = Math.floor(i / 6);
   const x = 34 + col * 118;
   const y = 160 + row * 112;
+  const ui = presentationFor(param);
 
   add({
     id: id(),
     maxclass: "comment",
-    text: label,
+    text: uiLabels[param],
     patching_rect: [x, y - 22, 104, 20],
+    presentation: 1,
+    presentation_rect: ui.label,
+    fontsize: 9,
+    textcolor: [0.84, 0.78, 0.68, 1],
   });
 
   const dial = add({
@@ -222,6 +326,8 @@ controls.forEach(([param, label, min, max, initial, scale], i) => {
     numoutlets: 2,
     outlettype: ["", "float"],
     patching_rect: [x, y, 50, 48],
+    presentation: 1,
+    presentation_rect: ui.dial,
     varname: `hearth_${param}`,
     parameter_enable: 1,
     saved_attribute_attributes: {
@@ -294,8 +400,9 @@ const maxpat = {
     fileversion: 1,
     appversion,
     classnamespace: "box",
-    rect: [80, 80, 770, 520],
+    rect: [80, 80, 770, 190],
     bgcolor: [0.08, 0.075, 0.07, 1],
+    openinpresentation: 1,
     gridonopen: 1,
     gridsize: [15, 15],
     boxes,
