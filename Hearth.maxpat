@@ -299,12 +299,13 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            190,
-            83,
-            58,
-            14
+            188,
+            26,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -331,13 +332,17 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            198,
-            31,
+            202,
+            43,
             42,
-            48
+            52
           ],
           "varname": "hearth_hearth",
           "parameter_enable": 1,
+          "annotation_name": "Hearth",
+          "annotation": "Main warmth and drive amount. Higher settings create denser saturation and stronger harmonic color.",
+          "hint": "Main warmth and drive amount. Higher settings create denser saturation and stronger harmonic color.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Hearth",
@@ -348,9 +353,14 @@
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 35
-              ]
+              ],
+              "parameter_info": "Main warmth and drive amount. Higher settings create denser saturation and stronger harmonic color."
             }
-          }
+          },
+          "showname": 0,
+          "shownumber": 1,
+          "valuepopup": 1,
+          "valuepopuplabel": 3
         }
       },
       {
@@ -431,7 +441,7 @@
         "box": {
           "id": "obj-19",
           "maxclass": "comment",
-          "text": "Body",
+          "text": "Body dB",
           "patching_rect": [
             152,
             138,
@@ -441,11 +451,12 @@
           "presentation": 1,
           "presentation_rect": [
             256,
-            83,
-            58,
-            14
+            26,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -472,26 +483,36 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            264,
-            31,
+            270,
+            43,
             42,
-            48
+            52
           ],
           "varname": "hearth_body",
           "parameter_enable": 1,
+          "annotation_name": "Body dB",
+          "annotation": "Low-mid body emphasis before the nonlinear stage. Positive values add weight; negative values thin the drive path.",
+          "hint": "Low-mid body emphasis before the nonlinear stage. Positive values add weight; negative values thin the drive path.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Body dB",
-              "parameter_shortname": "Body dB",
+              "parameter_shortname": "Body",
               "parameter_type": 0,
               "parameter_mmin": -6,
               "parameter_mmax": 6,
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 1.5
-              ]
+              ],
+              "parameter_info": "Low-mid body emphasis before the nonlinear stage. Positive values add weight; negative values thin the drive path.",
+              "parameter_unitstyle": 4
             }
-          }
+          },
+          "showname": 0,
+          "shownumber": 1,
+          "valuepopup": 1,
+          "valuepopuplabel": 3
         }
       },
       {
@@ -563,12 +584,13 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            388,
-            83,
-            58,
-            14
+            392,
+            26,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -595,13 +617,17 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            396,
-            31,
+            406,
+            43,
             42,
-            48
+            52
           ],
           "varname": "hearth_velvet",
           "parameter_enable": 1,
+          "annotation_name": "Velvet",
+          "annotation": "Softens upper harmonics after saturation. Higher values make the tone smoother and less edgy.",
+          "hint": "Softens upper harmonics after saturation. Higher values make the tone smoother and less edgy.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Velvet",
@@ -612,9 +638,14 @@
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 28
-              ]
+              ],
+              "parameter_info": "Softens upper harmonics after saturation. Higher values make the tone smoother and less edgy."
             }
-          }
+          },
+          "showname": 0,
+          "shownumber": 1,
+          "valuepopup": 1,
+          "valuepopuplabel": 3
         }
       },
       {
@@ -704,12 +735,13 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            156,
-            148,
-            58,
-            14
+            150,
+            99,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -737,12 +769,16 @@
           "presentation": 1,
           "presentation_rect": [
             164,
-            96,
+            116,
             42,
-            48
+            52
           ],
           "varname": "hearth_bloom",
           "parameter_enable": 1,
+          "annotation_name": "Bloom",
+          "annotation": "Transient-local parallel density. Higher values make attacks feel fuller and more saturated.",
+          "hint": "Transient-local parallel density. Higher values make attacks feel fuller and more saturated.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Bloom",
@@ -753,9 +789,14 @@
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 24
-              ]
+              ],
+              "parameter_info": "Transient-local parallel density. Higher values make attacks feel fuller and more saturated."
             }
-          }
+          },
+          "showname": 0,
+          "shownumber": 1,
+          "valuepopup": 1,
+          "valuepopuplabel": 3
         }
       },
       {
@@ -845,12 +886,13 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            228,
-            148,
-            58,
-            14
+            224,
+            99,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -877,13 +919,17 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            236,
-            96,
+            238,
+            116,
             42,
-            48
+            52
           ],
           "varname": "hearth_flux",
           "parameter_enable": 1,
+          "annotation_name": "Flux",
+          "annotation": "Adds a path-dependent flux lane for tape-like movement and memory in the saturation.",
+          "hint": "Adds a path-dependent flux lane for tape-like movement and memory in the saturation.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Flux",
@@ -894,9 +940,14 @@
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 18
-              ]
+              ],
+              "parameter_info": "Adds a path-dependent flux lane for tape-like movement and memory in the saturation."
             }
-          }
+          },
+          "showname": 0,
+          "shownumber": 1,
+          "valuepopup": 1,
+          "valuepopuplabel": 3
         }
       },
       {
@@ -986,12 +1037,13 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            322,
-            83,
-            58,
-            14
+            324,
+            26,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -1018,13 +1070,17 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            330,
-            31,
+            338,
+            43,
             42,
-            48
+            52
           ],
           "varname": "hearth_bias",
           "parameter_enable": 1,
+          "annotation_name": "Bias",
+          "annotation": "Asymmetry bias for the saturation curve. Use subtle amounts for richer even-harmonic color.",
+          "hint": "Asymmetry bias for the saturation curve. Use subtle amounts for richer even-harmonic color.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Bias",
@@ -1035,9 +1091,14 @@
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 4
-              ]
+              ],
+              "parameter_info": "Asymmetry bias for the saturation curve. Use subtle amounts for richer even-harmonic color."
             }
-          }
+          },
+          "showname": 0,
+          "shownumber": 1,
+          "valuepopup": 1,
+          "valuepopuplabel": 3
         }
       },
       {
@@ -1127,12 +1188,13 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            300,
-            148,
-            58,
-            14
+            298,
+            99,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -1159,13 +1221,17 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            308,
-            96,
+            312,
+            116,
             42,
-            48
+            52
           ],
           "varname": "hearth_adapt",
           "parameter_enable": 1,
+          "annotation_name": "Adapt",
+          "annotation": "Adaptive protection amount. Higher values back off harshness when the source gets bright or rough.",
+          "hint": "Adaptive protection amount. Higher values back off harshness when the source gets bright or rough.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Adapt",
@@ -1176,9 +1242,14 @@
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 62
-              ]
+              ],
+              "parameter_info": "Adaptive protection amount. Higher values back off harshness when the source gets bright or rough."
             }
-          }
+          },
+          "showname": 0,
+          "shownumber": 1,
+          "valuepopup": 1,
+          "valuepopuplabel": 3
         }
       },
       {
@@ -1268,12 +1339,13 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            454,
-            83,
-            58,
-            14
+            460,
+            26,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -1300,13 +1372,17 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            462,
-            31,
+            474,
+            43,
             42,
-            48
+            52
           ],
           "varname": "hearth_detail",
           "parameter_enable": 1,
+          "annotation_name": "Detail",
+          "annotation": "Restores a little presence after smoothing. Raise it when the result needs more articulation.",
+          "hint": "Restores a little presence after smoothing. Raise it when the result needs more articulation.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Detail",
@@ -1317,9 +1393,14 @@
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 58
-              ]
+              ],
+              "parameter_info": "Restores a little presence after smoothing. Raise it when the result needs more articulation."
             }
-          }
+          },
+          "showname": 0,
+          "shownumber": 1,
+          "valuepopup": 1,
+          "valuepopuplabel": 3
         }
       },
       {
@@ -1409,12 +1490,13 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            520,
-            83,
-            58,
-            14
+            528,
+            26,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -1441,26 +1523,35 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            528,
-            31,
+            542,
+            43,
             42,
-            48
+            52
           ],
           "varname": "hearth_dynamics",
           "parameter_enable": 1,
+          "annotation_name": "Dynamics",
+          "annotation": "Makes drive respond to level and envelope. Higher values push loud passages more dynamically.",
+          "hint": "Makes drive respond to level and envelope. Higher values push loud passages more dynamically.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Dynamics",
-              "parameter_shortname": "Dynamics",
+              "parameter_shortname": "Dyn",
               "parameter_type": 0,
               "parameter_mmin": 0,
               "parameter_mmax": 100,
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 42
-              ]
+              ],
+              "parameter_info": "Makes drive respond to level and envelope. Higher values push loud passages more dynamically."
             }
-          }
+          },
+          "showname": 0,
+          "shownumber": 1,
+          "valuepopup": 1,
+          "valuepopuplabel": 3
         }
       },
       {
@@ -1541,7 +1632,7 @@
         "box": {
           "id": "obj-66",
           "maxclass": "comment",
-          "text": "Recover",
+          "text": "Recovery",
           "patching_rect": [
             388,
             250,
@@ -1550,12 +1641,13 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            586,
-            83,
-            58,
-            14
+            596,
+            26,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -1582,26 +1674,36 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            594,
-            31,
+            610,
+            43,
             42,
-            48
+            52
           ],
           "varname": "hearth_recovery",
           "parameter_enable": 1,
+          "annotation_name": "Recovery ms",
+          "annotation": "Envelope recovery time in milliseconds for adaptive drive and flux movement.",
+          "hint": "Envelope recovery time in milliseconds for adaptive drive and flux movement.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Recovery ms",
-              "parameter_shortname": "Recovery ms",
+              "parameter_shortname": "Recov",
               "parameter_type": 0,
               "parameter_mmin": 20,
               "parameter_mmax": 600,
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 140
-              ]
+              ],
+              "parameter_info": "Envelope recovery time in milliseconds for adaptive drive and flux movement.",
+              "parameter_unitstyle": 2
             }
-          }
+          },
+          "showname": 0,
+          "shownumber": 1,
+          "valuepopup": 1,
+          "valuepopuplabel": 3
         }
       },
       {
@@ -1674,11 +1776,12 @@
           "presentation": 1,
           "presentation_rect": [
             372,
-            148,
-            58,
-            14
+            99,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -1705,13 +1808,17 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            380,
-            96,
+            386,
+            116,
             42,
-            48
+            52
           ],
           "varname": "hearth_stereoProtect",
           "parameter_enable": 1,
+          "annotation_name": "Stereo",
+          "annotation": "Keeps the side channel from overdriving relative to the center, preserving stereo stability.",
+          "hint": "Keeps the side channel from overdriving relative to the center, preserving stereo stability.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Stereo",
@@ -1722,9 +1829,14 @@
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 70
-              ]
+              ],
+              "parameter_info": "Keeps the side channel from overdriving relative to the center, preserving stereo stability."
             }
-          }
+          },
+          "showname": 0,
+          "shownumber": 1,
+          "valuepopup": 1,
+          "valuepopuplabel": 3
         }
       },
       {
@@ -1814,12 +1926,13 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            444,
-            148,
-            58,
-            14
+            446,
+            99,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -1846,13 +1959,17 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            452,
-            96,
+            460,
+            116,
             42,
-            48
+            52
           ],
           "varname": "hearth_mix",
           "parameter_enable": 1,
+          "annotation_name": "Mix",
+          "annotation": "Wet/dry blend between the input and Hearth's processed signal.",
+          "hint": "Wet/dry blend between the input and Hearth's processed signal.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Mix",
@@ -1863,9 +1980,15 @@
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 100
-              ]
+              ],
+              "parameter_info": "Wet/dry blend between the input and Hearth's processed signal.",
+              "parameter_unitstyle": 5
             }
-          }
+          },
+          "showname": 0,
+          "shownumber": 1,
+          "valuepopup": 1,
+          "valuepopuplabel": 3
         }
       },
       {
@@ -1946,7 +2069,7 @@
         "box": {
           "id": "obj-83",
           "maxclass": "comment",
-          "text": "Output",
+          "text": "Output dB",
           "patching_rect": [
             34,
             362,
@@ -1955,12 +2078,13 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            652,
-            83,
-            58,
-            14
+            664,
+            26,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -1987,26 +2111,36 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            660,
-            31,
+            678,
+            43,
             42,
-            48
+            52
           ],
           "varname": "hearth_output",
           "parameter_enable": 1,
+          "annotation_name": "Output dB",
+          "annotation": "Output trim after processing. Use this to level-match the processed signal.",
+          "hint": "Output trim after processing. Use this to level-match the processed signal.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Output dB",
-              "parameter_shortname": "Output dB",
+              "parameter_shortname": "Out",
               "parameter_type": 0,
               "parameter_mmin": -24,
               "parameter_mmax": 24,
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 0
-              ]
+              ],
+              "parameter_info": "Output trim after processing. Use this to level-match the processed signal.",
+              "parameter_unitstyle": 4
             }
-          }
+          },
+          "showname": 0,
+          "shownumber": 1,
+          "valuepopup": 1,
+          "valuepopuplabel": 3
         }
       },
       {
@@ -2078,12 +2212,13 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            516,
-            148,
-            58,
-            14
+            520,
+            99,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -2095,10 +2230,11 @@
       {
         "box": {
           "id": "obj-89",
-          "maxclass": "live.dial",
+          "maxclass": "live.menu",
           "numinlets": 1,
-          "numoutlets": 2,
+          "numoutlets": 3,
           "outlettype": [
+            "",
             "",
             "float"
           ],
@@ -2110,26 +2246,41 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            524,
-            96,
-            42,
-            48
+            520,
+            126,
+            68,
+            20
           ],
           "varname": "hearth_quality",
           "parameter_enable": 1,
+          "annotation_name": "Quality",
+          "annotation": "Anti-aliasing quality for the tube lane: Eco, Live, or High. Higher quality costs more CPU.",
+          "hint": "Anti-aliasing quality for the tube lane: Eco, Live, or High. Higher quality costs more CPU.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Quality",
-              "parameter_shortname": "Quality",
-              "parameter_type": 0,
+              "parameter_shortname": "Qual",
+              "parameter_type": 2,
               "parameter_mmin": 0,
               "parameter_mmax": 2,
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 1
+              ],
+              "parameter_info": "Anti-aliasing quality for the tube lane: Eco, Live, or High. Higher quality costs more CPU.",
+              "parameter_enum": [
+                "Eco",
+                "Live",
+                "High"
               ]
             }
-          }
+          },
+          "items": [
+            "Eco",
+            "Live",
+            "High"
+          ]
         }
       },
       {
@@ -2201,12 +2352,13 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            588,
-            148,
-            58,
-            14
+            594,
+            99,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -2218,7 +2370,7 @@
       {
         "box": {
           "id": "obj-94",
-          "maxclass": "live.dial",
+          "maxclass": "live.toggle",
           "numinlets": 1,
           "numoutlets": 2,
           "outlettype": [
@@ -2233,23 +2385,32 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            596,
-            96,
-            42,
-            48
+            617,
+            121,
+            25,
+            25
           ],
           "varname": "hearth_autoTrim",
           "parameter_enable": 1,
+          "annotation_name": "Auto Trim",
+          "annotation": "Automatically compensates output level against the input envelope for easier level matching.",
+          "hint": "Automatically compensates output level against the input envelope for easier level matching.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Auto Trim",
-              "parameter_shortname": "Auto Trim",
-              "parameter_type": 0,
+              "parameter_shortname": "Auto",
+              "parameter_type": 2,
               "parameter_mmin": 0,
               "parameter_mmax": 1,
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 1
+              ],
+              "parameter_info": "Automatically compensates output level against the input envelope for easier level matching.",
+              "parameter_enum": [
+                "Off",
+                "On"
               ]
             }
           }
@@ -2324,12 +2485,13 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            660,
-            148,
-            58,
-            14
+            668,
+            99,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -2356,13 +2518,17 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            668,
-            96,
+            682,
+            116,
             42,
-            48
+            52
           ],
           "varname": "hearth_patina",
           "parameter_enable": 1,
+          "annotation_name": "Patina",
+          "annotation": "Adds a very subtle deterministic low-level texture. Keep low for clean material.",
+          "hint": "Adds a very subtle deterministic low-level texture. Keep low for clean material.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Patina",
@@ -2373,9 +2539,14 @@
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 0
-              ]
+              ],
+              "parameter_info": "Adds a very subtle deterministic low-level texture. Keep low for clean material."
             }
-          }
+          },
+          "showname": 0,
+          "shownumber": 1,
+          "valuepopup": 1,
+          "valuepopuplabel": 3
         }
       },
       {
@@ -2456,7 +2627,7 @@
         "box": {
           "id": "obj-104",
           "maxclass": "comment",
-          "text": "Input",
+          "text": "Input dB",
           "patching_rect": [
             506,
             362,
@@ -2465,12 +2636,13 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            124,
-            83,
-            58,
-            14
+            120,
+            26,
+            70,
+            13
           ],
           "fontsize": 9,
+          "textjustification": 1,
           "textcolor": [
             0.84,
             0.78,
@@ -2497,26 +2669,36 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            132,
-            31,
+            134,
+            43,
             42,
-            48
+            52
           ],
           "varname": "hearth_input",
           "parameter_enable": 1,
+          "annotation_name": "Input dB",
+          "annotation": "Input trim before the saturation core. Use this to hit Hearth harder or back off hot material.",
+          "hint": "Input trim before the saturation core. Use this to hit Hearth harder or back off hot material.",
+          "fontsize": 9,
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Input dB",
-              "parameter_shortname": "Input dB",
+              "parameter_shortname": "In",
               "parameter_type": 0,
               "parameter_mmin": -24,
               "parameter_mmax": 24,
               "parameter_initial_enable": 1,
               "parameter_initial": [
                 0
-              ]
+              ],
+              "parameter_info": "Input trim before the saturation core. Use this to hit Hearth harder or back off hot material.",
+              "parameter_unitstyle": 4
             }
-          }
+          },
+          "showname": 0,
+          "shownumber": 1,
+          "valuepopup": 1,
+          "valuepopuplabel": 3
         }
       },
       {

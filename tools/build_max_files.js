@@ -157,15 +157,15 @@ const uiOrder = [
   "patina",
 ];
 const uiLabels = {
-  input: "Input",
+  input: "Input dB",
   hearth: "Hearth",
-  body: "Body",
+  body: "Body dB",
   bias: "Bias",
   velvet: "Velvet",
   detail: "Detail",
   dynamics: "Dyn",
-  recovery: "Recover",
-  output: "Output",
+  recovery: "Recovery",
+  output: "Output dB",
   bloom: "Bloom",
   flux: "Flux",
   adapt: "Adapt",
@@ -175,15 +175,118 @@ const uiLabels = {
   autoTrim: "Auto",
   patina: "Patina",
 };
+const controlMeta = {
+  input: {
+    short: "In",
+    kind: "dial",
+    info: "Input trim before the saturation core. Use this to hit Hearth harder or back off hot material.",
+    unitstyle: 4,
+  },
+  hearth: {
+    short: "Hearth",
+    kind: "dial",
+    info: "Main warmth and drive amount. Higher settings create denser saturation and stronger harmonic color.",
+  },
+  body: {
+    short: "Body",
+    kind: "dial",
+    info: "Low-mid body emphasis before the nonlinear stage. Positive values add weight; negative values thin the drive path.",
+    unitstyle: 4,
+  },
+  bias: {
+    short: "Bias",
+    kind: "dial",
+    info: "Asymmetry bias for the saturation curve. Use subtle amounts for richer even-harmonic color.",
+  },
+  velvet: {
+    short: "Velvet",
+    kind: "dial",
+    info: "Softens upper harmonics after saturation. Higher values make the tone smoother and less edgy.",
+  },
+  detail: {
+    short: "Detail",
+    kind: "dial",
+    info: "Restores a little presence after smoothing. Raise it when the result needs more articulation.",
+  },
+  dynamics: {
+    short: "Dyn",
+    kind: "dial",
+    info: "Makes drive respond to level and envelope. Higher values push loud passages more dynamically.",
+  },
+  recovery: {
+    short: "Recov",
+    kind: "dial",
+    info: "Envelope recovery time in milliseconds for adaptive drive and flux movement.",
+    unitstyle: 2,
+  },
+  output: {
+    short: "Out",
+    kind: "dial",
+    info: "Output trim after processing. Use this to level-match the processed signal.",
+    unitstyle: 4,
+  },
+  bloom: {
+    short: "Bloom",
+    kind: "dial",
+    info: "Transient-local parallel density. Higher values make attacks feel fuller and more saturated.",
+  },
+  flux: {
+    short: "Flux",
+    kind: "dial",
+    info: "Adds a path-dependent flux lane for tape-like movement and memory in the saturation.",
+  },
+  adapt: {
+    short: "Adapt",
+    kind: "dial",
+    info: "Adaptive protection amount. Higher values back off harshness when the source gets bright or rough.",
+  },
+  stereoProtect: {
+    short: "Stereo",
+    kind: "dial",
+    info: "Keeps the side channel from overdriving relative to the center, preserving stereo stability.",
+  },
+  mix: {
+    short: "Mix",
+    kind: "dial",
+    info: "Wet/dry blend between the input and Hearth's processed signal.",
+    unitstyle: 5,
+  },
+  quality: {
+    short: "Qual",
+    kind: "menu",
+    info: "Anti-aliasing quality for the tube lane: Eco, Live, or High. Higher quality costs more CPU.",
+    enum: ["Eco", "Live", "High"],
+  },
+  autoTrim: {
+    short: "Auto",
+    kind: "toggle",
+    info: "Automatically compensates output level against the input envelope for easier level matching.",
+    enum: ["Off", "On"],
+  },
+  patina: {
+    short: "Patina",
+    kind: "dial",
+    info: "Adds a very subtle deterministic low-level texture. Keep low for clean material.",
+  },
+};
 const presentationFor = (param) => {
   const i = uiOrder.indexOf(param);
   const row = i >= 9 ? 1 : 0;
   const col = row ? i - 9 : i;
-  const startX = row ? 164 : 132;
-  const step = row ? 72 : 66;
+  const startX = row ? 164 : 134;
+  const step = row ? 74 : 68;
+  const x = startX + col * step;
+  const meta = controlMeta[param];
+  const y = row ? 116 : 43;
+  const control =
+    meta.kind === "menu"
+      ? [x - 14, y + 10, 68, 20]
+      : meta.kind === "toggle"
+        ? [x + 9, y + 5, 25, 25]
+        : [x, y, 42, 52];
   return {
-    dial: [startX + col * step, row ? 96 : 31, 42, 48],
-    label: [startX + col * step - 8, row ? 148 : 83, 58, 14],
+    control,
+    label: [x - 14, row ? 99 : 26, 70, 13],
   };
 };
 
@@ -329,6 +432,7 @@ controls.forEach(([param, label, min, max, initial, scale], i) => {
   const x = 34 + col * 118;
   const y = 160 + row * 112;
   const ui = presentationFor(param);
+  const meta = controlMeta[param];
 
   add({
     id: id(),
@@ -338,32 +442,53 @@ controls.forEach(([param, label, min, max, initial, scale], i) => {
     presentation: 1,
     presentation_rect: ui.label,
     fontsize: 9,
+    textjustification: 1,
     textcolor: [0.84, 0.78, 0.68, 1],
   });
 
-  const dial = add({
+  const valueAttrs = {
+    parameter_longname: label,
+    parameter_shortname: meta.short,
+    parameter_type: meta.kind === "menu" || meta.kind === "toggle" ? 2 : 0,
+    parameter_mmin: min,
+    parameter_mmax: max,
+    parameter_initial_enable: 1,
+    parameter_initial: [initial],
+    parameter_info: meta.info,
+  };
+  if (meta.enum) valueAttrs.parameter_enum = meta.enum;
+  if (meta.unitstyle) valueAttrs.parameter_unitstyle = meta.unitstyle;
+
+  const controlBox = {
     id: id(),
-    maxclass: "live.dial",
+    maxclass: meta.kind === "menu" ? "live.menu" : meta.kind === "toggle" ? "live.toggle" : "live.dial",
     numinlets: 1,
-    numoutlets: 2,
-    outlettype: ["", "float"],
+    numoutlets: meta.kind === "menu" ? 3 : 2,
+    outlettype: meta.kind === "menu" ? ["", "", "float"] : ["", "float"],
     patching_rect: [x, y, 50, 48],
     presentation: 1,
-    presentation_rect: ui.dial,
+    presentation_rect: ui.control,
     varname: `hearth_${param}`,
     parameter_enable: 1,
+    annotation_name: label,
+    annotation: meta.info,
+    hint: meta.info,
+    fontsize: 9,
     saved_attribute_attributes: {
-      valueof: {
-        parameter_longname: label,
-        parameter_shortname: label,
-        parameter_type: 0,
-        parameter_mmin: min,
-        parameter_mmax: max,
-        parameter_initial_enable: 1,
-        parameter_initial: [initial],
-      },
+      valueof: valueAttrs,
     },
-  });
+  };
+  if (meta.kind === "dial") {
+    controlBox.showname = 0;
+    controlBox.shownumber = 1;
+    controlBox.valuepopup = 1;
+    controlBox.valuepopuplabel = 3;
+  }
+  if (meta.kind === "menu") {
+    controlBox.items = meta.enum;
+  }
+
+  const dial = add(controlBox);
 
   const num = add({
     id: id(),
