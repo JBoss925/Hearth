@@ -49,9 +49,9 @@
           "background": 1,
           "ignoreclick": 1,
           "bgcolor": [
-            0.105,
-            0.095,
-            0.082,
+            0.075,
+            0.067,
+            0.058,
             1
           ],
           "bordercolor": [
@@ -65,114 +65,669 @@
       {
         "box": {
           "id": "obj-2",
-          "maxclass": "comment",
-          "text": "HEARTH",
+          "maxclass": "panel",
           "patching_rect": [
-            35,
-            505,
-            100,
-            24
+            28,
+            512,
+            92,
+            152
           ],
           "presentation": 1,
           "presentation_rect": [
-            18,
-            23,
-            98,
-            24
+            8,
+            12,
+            92,
+            152
           ],
-          "fontsize": 18,
-          "textcolor": [
-            1,
-            0.72,
-            0.43,
+          "background": 1,
+          "ignoreclick": 1,
+          "rounded": 6,
+          "bgcolor": [
+            0.09,
+            0.078,
+            0.066,
             1
+          ],
+          "bordercolor": [
+            1,
+            0.64,
+            0.31,
+            0.36
           ]
         }
       },
       {
         "box": {
           "id": "obj-3",
-          "maxclass": "comment",
-          "text": "warm adaptive saturation",
+          "maxclass": "panel",
           "patching_rect": [
-            35,
-            531,
-            165,
-            18
+            126,
+            514,
+            190,
+            152
           ],
           "presentation": 1,
           "presentation_rect": [
-            18,
-            49,
-            118,
-            34
+            106,
+            14,
+            190,
+            152
           ],
-          "fontsize": 10,
-          "textcolor": [
-            0.78,
-            0.69,
-            0.58,
-            1
+          "background": 1,
+          "ignoreclick": 1,
+          "rounded": 6,
+          "bgcolor": [
+            0.27849999999999997,
+            0.19305999999999998,
+            0.11344,
+            0.94
+          ],
+          "bordercolor": [
+            1,
+            0.64,
+            0.31,
+            0.42
           ]
         }
       },
       {
         "box": {
           "id": "obj-4",
-          "maxclass": "comment",
-          "text": "TONE",
+          "maxclass": "panel",
           "patching_rect": [
-            35,
-            555,
-            80,
-            14
+            325,
+            514,
+            166,
+            152
           ],
           "presentation": 1,
           "presentation_rect": [
-            18,
-            94,
-            70,
-            14
+            305,
+            14,
+            166,
+            152
           ],
-          "fontsize": 9,
-          "textcolor": [
+          "background": 1,
+          "ignoreclick": 1,
+          "rounded": 6,
+          "bgcolor": [
+            0.1558,
+            0.13948000000000002,
+            0.20872000000000002,
+            0.94
+          ],
+          "bordercolor": [
+            0.58,
             0.52,
-            0.77,
-            0.7,
-            1
+            1,
+            0.46
           ]
         }
       },
       {
         "box": {
           "id": "obj-5",
-          "maxclass": "comment",
-          "text": "MOTION",
+          "maxclass": "panel",
           "patching_rect": [
-            35,
-            573,
-            80,
-            14
+            500,
+            514,
+            150,
+            152
           ],
           "presentation": 1,
           "presentation_rect": [
-            18,
-            114,
-            70,
-            14
+            480,
+            14,
+            150,
+            152
           ],
-          "fontsize": 9,
-          "textcolor": [
-            0.72,
-            0.62,
-            0.88,
-            1
+          "background": 1,
+          "ignoreclick": 1,
+          "rounded": 6,
+          "bgcolor": [
+            0.1177,
+            0.17802,
+            0.15348,
+            0.94
+          ],
+          "bordercolor": [
+            0.38,
+            0.86,
+            0.74,
+            0.42
           ]
         }
       },
       {
         "box": {
           "id": "obj-6",
+          "maxclass": "panel",
+          "patching_rect": [
+            659,
+            514,
+            118,
+            152
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            639,
+            14,
+            118,
+            152
+          ],
+          "background": 1,
+          "ignoreclick": 1,
+          "rounded": 6,
+          "bgcolor": [
+            0.21020000000000003,
+            0.19708000000000003,
+            0.16712000000000002,
+            0.94
+          ],
+          "bordercolor": [
+            0.92,
+            0.88,
+            0.74,
+            0.38
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-7",
+          "maxclass": "comment",
+          "text": "HEARTH",
+          "patching_rect": [
+            38,
+            715,
+            80,
+            22
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            18,
+            25,
+            80,
+            22
+          ],
+          "fontsize": 18,
+          "fontface": 1,
+          "textjustification": 0,
+          "textcolor": [
+            1,
+            0.64,
+            0.31,
+            1
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-8",
+          "maxclass": "comment",
+          "text": "warmth-first",
+          "patching_rect": [
+            38,
+            744,
+            74,
+            14
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            18,
+            54,
+            74,
+            14
+          ],
+          "fontsize": 9,
+          "fontface": 0,
+          "textjustification": 0,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-9",
+          "maxclass": "comment",
+          "text": "adaptive",
+          "patching_rect": [
+            38,
+            758,
+            68,
+            14
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            18,
+            68,
+            68,
+            14
+          ],
+          "fontsize": 9,
+          "fontface": 0,
+          "textjustification": 0,
+          "textcolor": [
+            0.38,
+            0.86,
+            0.74,
+            1
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-10",
+          "maxclass": "comment",
+          "text": "saturator",
+          "patching_rect": [
+            38,
+            772,
+            68,
+            14
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            18,
+            82,
+            68,
+            14
+          ],
+          "fontsize": 9,
+          "fontface": 0,
+          "textjustification": 0,
+          "textcolor": [
+            1,
+            0.42,
+            0.54,
+            1
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-11",
+          "maxclass": "comment",
+          "text": "audio flow",
+          "patching_rect": [
+            38,
+            816,
+            70,
+            12
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            18,
+            126,
+            70,
+            12
+          ],
+          "fontsize": 8,
+          "fontface": 0,
+          "textjustification": 0,
+          "textcolor": [
+            0.61,
+            0.55,
+            0.47,
+            1
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-12",
+          "maxclass": "comment",
+          "text": "IN -> HEAT -> LANES -> SERVO -> OUT",
+          "patching_rect": [
+            38,
+            829,
+            82,
+            24
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            18,
+            139,
+            82,
+            24
+          ],
+          "fontsize": 7,
+          "fontface": 0,
+          "textjustification": 0,
+          "textcolor": [
+            0.61,
+            0.55,
+            0.47,
+            1
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-13",
+          "maxclass": "comment",
+          "text": "1  SHAPE",
+          "patching_rect": [
+            136,
+            710,
+            70,
+            12
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            116,
+            20,
+            70,
+            12
+          ],
+          "fontsize": 9,
+          "fontface": 1,
+          "textjustification": 0,
+          "textcolor": [
+            1,
+            0.64,
+            0.31,
+            1
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-14",
+          "maxclass": "comment",
+          "text": "input / emphasis / tube bias",
+          "patching_rect": [
+            208,
+            710,
+            102,
+            12
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            188,
+            20,
+            102,
+            12
+          ],
+          "fontsize": 8,
+          "fontface": 0,
+          "textjustification": 2,
+          "textcolor": [
+            0.61,
+            0.55,
+            0.47,
+            1
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-15",
+          "maxclass": "comment",
+          "text": "2  LANES",
+          "patching_rect": [
+            334,
+            710,
+            70,
+            12
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            314,
+            20,
+            70,
+            12
+          ],
+          "fontsize": 9,
+          "fontface": 1,
+          "textjustification": 0,
+          "textcolor": [
+            0.58,
+            0.52,
+            1,
+            1
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-16",
+          "maxclass": "comment",
+          "text": "bloom + flux + quality",
+          "patching_rect": [
+            406,
+            710,
+            80,
+            12
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            386,
+            20,
+            80,
+            12
+          ],
+          "fontsize": 8,
+          "fontface": 0,
+          "textjustification": 2,
+          "textcolor": [
+            0.61,
+            0.55,
+            0.47,
+            1
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-17",
+          "maxclass": "comment",
+          "text": "3  SERVO / TONE",
+          "patching_rect": [
+            509,
+            710,
+            95,
+            12
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            489,
+            20,
+            95,
+            12
+          ],
+          "fontsize": 9,
+          "fontface": 1,
+          "textjustification": 0,
+          "textcolor": [
+            0.38,
+            0.86,
+            0.74,
+            1
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-18",
+          "maxclass": "comment",
+          "text": "guard, soften, stabilize",
+          "patching_rect": [
+            558,
+            710,
+            85,
+            12
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            538,
+            20,
+            85,
+            12
+          ],
+          "fontsize": 8,
+          "fontface": 0,
+          "textjustification": 2,
+          "textcolor": [
+            0.61,
+            0.55,
+            0.47,
+            1
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-19",
+          "maxclass": "comment",
+          "text": "4  BLEND",
+          "patching_rect": [
+            669,
+            710,
+            70,
+            12
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            649,
+            20,
+            70,
+            12
+          ],
+          "fontsize": 9,
+          "fontface": 1,
+          "textjustification": 0,
+          "textcolor": [
+            0.92,
+            0.88,
+            0.74,
+            1
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-20",
+          "maxclass": "comment",
+          "text": "level / mix",
+          "patching_rect": [
+            728,
+            710,
+            42,
+            12
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            708,
+            20,
+            42,
+            12
+          ],
+          "fontsize": 8,
+          "fontface": 0,
+          "textjustification": 2,
+          "textcolor": [
+            0.61,
+            0.55,
+            0.47,
+            1
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-21",
+          "maxclass": "comment",
+          "text": ">",
+          "patching_rect": [
+            317,
+            768,
+            12,
+            18
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            297,
+            78,
+            12,
+            18
+          ],
+          "fontsize": 15,
+          "fontface": 1,
+          "textjustification": 1,
+          "textcolor": [
+            1,
+            0.64,
+            0.31,
+            0.7
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-22",
+          "maxclass": "comment",
+          "text": ">",
+          "patching_rect": [
+            492,
+            768,
+            12,
+            18
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            472,
+            78,
+            12,
+            18
+          ],
+          "fontsize": 15,
+          "fontface": 1,
+          "textjustification": 1,
+          "textcolor": [
+            0.58,
+            0.52,
+            1,
+            0.7
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-23",
+          "maxclass": "comment",
+          "text": ">",
+          "patching_rect": [
+            651,
+            768,
+            12,
+            18
+          ],
+          "presentation": 1,
+          "presentation_rect": [
+            631,
+            78,
+            12,
+            18
+          ],
+          "fontsize": 15,
+          "fontface": 1,
+          "textjustification": 1,
+          "textcolor": [
+            0.38,
+            0.86,
+            0.74,
+            0.7
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-24",
           "maxclass": "newobj",
           "text": "plugin~",
           "numinlets": 0,
@@ -191,7 +746,7 @@
       },
       {
         "box": {
-          "id": "obj-7",
+          "id": "obj-25",
           "maxclass": "newobj",
           "text": "gen~ Hearth-Core.gendsp @cpumeasure 1",
           "numinlets": 2,
@@ -210,7 +765,7 @@
       },
       {
         "box": {
-          "id": "obj-8",
+          "id": "obj-26",
           "maxclass": "newobj",
           "text": "plugout~ @chans 2",
           "numinlets": 2,
@@ -225,7 +780,7 @@
       },
       {
         "box": {
-          "id": "obj-9",
+          "id": "obj-27",
           "maxclass": "comment",
           "text": "Hearth - warm adaptive saturation for Max for Live 10+",
           "patching_rect": [
@@ -238,7 +793,7 @@
       },
       {
         "box": {
-          "id": "obj-10",
+          "id": "obj-28",
           "maxclass": "comment",
           "text": "Save this patch as a Max Audio Effect (.amxd). Keep Hearth-Core.gendsp beside it.",
           "patching_rect": [
@@ -251,7 +806,7 @@
       },
       {
         "box": {
-          "id": "obj-11",
+          "id": "obj-29",
           "maxclass": "newobj",
           "text": "loadmess presentation 1",
           "numinlets": 1,
@@ -269,7 +824,7 @@
       },
       {
         "box": {
-          "id": "obj-12",
+          "id": "obj-30",
           "maxclass": "newobj",
           "text": "thispatcher",
           "numinlets": 1,
@@ -288,7 +843,7 @@
       },
       {
         "box": {
-          "id": "obj-13",
+          "id": "obj-31",
           "maxclass": "comment",
           "text": "Hearth",
           "patching_rect": [
@@ -299,24 +854,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            188,
-            26,
-            70,
-            13
+            156,
+            33,
+            55,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            1,
+            0.64,
+            0.31,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-14",
+          "id": "obj-32",
           "maxclass": "live.dial",
           "numinlets": 1,
           "numoutlets": 2,
@@ -332,10 +887,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            202,
-            43,
-            42,
-            52
+            164,
+            51,
+            44,
+            55
           ],
           "varname": "hearth_hearth",
           "parameter_enable": 1,
@@ -343,6 +898,30 @@
           "annotation": "Main warmth and drive amount. Higher settings create denser saturation and stronger harmonic color.",
           "hint": "Main warmth and drive amount. Higher settings create denser saturation and stronger harmonic color.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            1,
+            0.64,
+            0.31,
+            1
+          ],
+          "bordercolor": [
+            1,
+            0.64,
+            0.31,
+            0.55
+          ],
+          "focusbordercolor": [
+            1,
+            0.64,
+            0.31,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Hearth",
@@ -360,12 +939,60 @@
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
-          "valuepopuplabel": 3
+          "valuepopuplabel": 3,
+          "dialcolor": [
+            0.035,
+            0.033,
+            0.031,
+            1
+          ],
+          "fgdialcolor": [
+            1,
+            0.64,
+            0.31,
+            0.45
+          ],
+          "activedialcolor": [
+            0.05,
+            0.046,
+            0.042,
+            1
+          ],
+          "activefgdialcolor": [
+            1,
+            0.64,
+            0.31,
+            1
+          ],
+          "needlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            0.72
+          ],
+          "activeneedlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "panelcolor": [
+            0.018,
+            0.017,
+            0.016,
+            0.86
+          ],
+          "tricolor": [
+            1,
+            0.64,
+            0.31,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-15",
+          "id": "obj-33",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -385,7 +1012,7 @@
       },
       {
         "box": {
-          "id": "obj-16",
+          "id": "obj-34",
           "maxclass": "newobj",
           "text": "scale 0 100 0. 1.",
           "numinlets": 6,
@@ -403,7 +1030,7 @@
       },
       {
         "box": {
-          "id": "obj-17",
+          "id": "obj-35",
           "maxclass": "message",
           "text": "hearth $1",
           "numinlets": 2,
@@ -421,7 +1048,7 @@
       },
       {
         "box": {
-          "id": "obj-18",
+          "id": "obj-36",
           "maxclass": "newobj",
           "text": "loadmess 35",
           "numinlets": 1,
@@ -439,7 +1066,7 @@
       },
       {
         "box": {
-          "id": "obj-19",
+          "id": "obj-37",
           "maxclass": "comment",
           "text": "Body dB",
           "patching_rect": [
@@ -450,24 +1077,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            256,
-            26,
-            70,
-            13
+            210,
+            38,
+            48,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            0.95,
+            0.76,
+            0.45,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-20",
+          "id": "obj-38",
           "maxclass": "live.dial",
           "numinlets": 1,
           "numoutlets": 2,
@@ -483,10 +1110,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            270,
-            43,
-            42,
-            52
+            217,
+            57,
+            36,
+            48
           ],
           "varname": "hearth_body",
           "parameter_enable": 1,
@@ -494,6 +1121,30 @@
           "annotation": "Low-mid body emphasis before the nonlinear stage. Positive values add weight; negative values thin the drive path.",
           "hint": "Low-mid body emphasis before the nonlinear stage. Positive values add weight; negative values thin the drive path.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            0.95,
+            0.76,
+            0.45,
+            1
+          ],
+          "bordercolor": [
+            0.95,
+            0.76,
+            0.45,
+            0.55
+          ],
+          "focusbordercolor": [
+            0.95,
+            0.76,
+            0.45,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Body dB",
@@ -512,12 +1163,60 @@
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
-          "valuepopuplabel": 3
+          "valuepopuplabel": 3,
+          "dialcolor": [
+            0.035,
+            0.033,
+            0.031,
+            1
+          ],
+          "fgdialcolor": [
+            0.95,
+            0.76,
+            0.45,
+            0.45
+          ],
+          "activedialcolor": [
+            0.05,
+            0.046,
+            0.042,
+            1
+          ],
+          "activefgdialcolor": [
+            0.95,
+            0.76,
+            0.45,
+            1
+          ],
+          "needlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            0.72
+          ],
+          "activeneedlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "panelcolor": [
+            0.018,
+            0.017,
+            0.016,
+            0.86
+          ],
+          "tricolor": [
+            0.95,
+            0.76,
+            0.45,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-21",
+          "id": "obj-39",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -537,7 +1236,7 @@
       },
       {
         "box": {
-          "id": "obj-22",
+          "id": "obj-40",
           "maxclass": "message",
           "text": "body $1",
           "numinlets": 2,
@@ -555,7 +1254,7 @@
       },
       {
         "box": {
-          "id": "obj-23",
+          "id": "obj-41",
           "maxclass": "newobj",
           "text": "loadmess 1.5",
           "numinlets": 1,
@@ -573,7 +1272,7 @@
       },
       {
         "box": {
-          "id": "obj-24",
+          "id": "obj-42",
           "maxclass": "comment",
           "text": "Velvet",
           "patching_rect": [
@@ -584,24 +1283,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            392,
-            26,
-            70,
-            13
+            478,
+            104,
+            48,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            0.73,
+            0.9,
+            0.62,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-25",
+          "id": "obj-43",
           "maxclass": "live.dial",
           "numinlets": 1,
           "numoutlets": 2,
@@ -617,10 +1316,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            406,
-            43,
-            42,
-            52
+            485,
+            119,
+            36,
+            48
           ],
           "varname": "hearth_velvet",
           "parameter_enable": 1,
@@ -628,6 +1327,30 @@
           "annotation": "Softens upper harmonics after saturation. Higher values make the tone smoother and less edgy.",
           "hint": "Softens upper harmonics after saturation. Higher values make the tone smoother and less edgy.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            0.73,
+            0.9,
+            0.62,
+            1
+          ],
+          "bordercolor": [
+            0.73,
+            0.9,
+            0.62,
+            0.55
+          ],
+          "focusbordercolor": [
+            0.73,
+            0.9,
+            0.62,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Velvet",
@@ -645,12 +1368,60 @@
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
-          "valuepopuplabel": 3
+          "valuepopuplabel": 3,
+          "dialcolor": [
+            0.035,
+            0.033,
+            0.031,
+            1
+          ],
+          "fgdialcolor": [
+            0.73,
+            0.9,
+            0.62,
+            0.45
+          ],
+          "activedialcolor": [
+            0.05,
+            0.046,
+            0.042,
+            1
+          ],
+          "activefgdialcolor": [
+            0.73,
+            0.9,
+            0.62,
+            1
+          ],
+          "needlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            0.72
+          ],
+          "activeneedlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "panelcolor": [
+            0.018,
+            0.017,
+            0.016,
+            0.86
+          ],
+          "tricolor": [
+            0.73,
+            0.9,
+            0.62,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-26",
+          "id": "obj-44",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -670,7 +1441,7 @@
       },
       {
         "box": {
-          "id": "obj-27",
+          "id": "obj-45",
           "maxclass": "newobj",
           "text": "scale 0 100 0. 1.",
           "numinlets": 6,
@@ -688,7 +1459,7 @@
       },
       {
         "box": {
-          "id": "obj-28",
+          "id": "obj-46",
           "maxclass": "message",
           "text": "velvet $1",
           "numinlets": 2,
@@ -706,7 +1477,7 @@
       },
       {
         "box": {
-          "id": "obj-29",
+          "id": "obj-47",
           "maxclass": "newobj",
           "text": "loadmess 28",
           "numinlets": 1,
@@ -724,7 +1495,7 @@
       },
       {
         "box": {
-          "id": "obj-30",
+          "id": "obj-48",
           "maxclass": "comment",
           "text": "Bloom",
           "patching_rect": [
@@ -735,24 +1506,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            150,
-            99,
-            70,
-            13
+            311,
+            42,
+            48,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            1,
+            0.42,
+            0.54,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-31",
+          "id": "obj-49",
           "maxclass": "live.dial",
           "numinlets": 1,
           "numoutlets": 2,
@@ -768,10 +1539,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            164,
-            116,
-            42,
-            52
+            318,
+            61,
+            36,
+            48
           ],
           "varname": "hearth_bloom",
           "parameter_enable": 1,
@@ -779,6 +1550,30 @@
           "annotation": "Transient-local parallel density. Higher values make attacks feel fuller and more saturated.",
           "hint": "Transient-local parallel density. Higher values make attacks feel fuller and more saturated.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            1,
+            0.42,
+            0.54,
+            1
+          ],
+          "bordercolor": [
+            1,
+            0.42,
+            0.54,
+            0.55
+          ],
+          "focusbordercolor": [
+            1,
+            0.42,
+            0.54,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Bloom",
@@ -796,12 +1591,60 @@
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
-          "valuepopuplabel": 3
+          "valuepopuplabel": 3,
+          "dialcolor": [
+            0.035,
+            0.033,
+            0.031,
+            1
+          ],
+          "fgdialcolor": [
+            1,
+            0.42,
+            0.54,
+            0.45
+          ],
+          "activedialcolor": [
+            0.05,
+            0.046,
+            0.042,
+            1
+          ],
+          "activefgdialcolor": [
+            1,
+            0.42,
+            0.54,
+            1
+          ],
+          "needlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            0.72
+          ],
+          "activeneedlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "panelcolor": [
+            0.018,
+            0.017,
+            0.016,
+            0.86
+          ],
+          "tricolor": [
+            1,
+            0.42,
+            0.54,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-32",
+          "id": "obj-50",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -821,7 +1664,7 @@
       },
       {
         "box": {
-          "id": "obj-33",
+          "id": "obj-51",
           "maxclass": "newobj",
           "text": "scale 0 100 0. 1.",
           "numinlets": 6,
@@ -839,7 +1682,7 @@
       },
       {
         "box": {
-          "id": "obj-34",
+          "id": "obj-52",
           "maxclass": "message",
           "text": "bloom $1",
           "numinlets": 2,
@@ -857,7 +1700,7 @@
       },
       {
         "box": {
-          "id": "obj-35",
+          "id": "obj-53",
           "maxclass": "newobj",
           "text": "loadmess 24",
           "numinlets": 1,
@@ -875,7 +1718,7 @@
       },
       {
         "box": {
-          "id": "obj-36",
+          "id": "obj-54",
           "maxclass": "comment",
           "text": "Flux",
           "patching_rect": [
@@ -886,24 +1729,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            224,
-            99,
-            70,
-            13
+            361,
+            42,
+            45,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            0.58,
+            0.52,
+            1,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-37",
+          "id": "obj-55",
           "maxclass": "live.dial",
           "numinlets": 1,
           "numoutlets": 2,
@@ -919,10 +1762,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            238,
-            116,
-            42,
-            52
+            366,
+            61,
+            36,
+            48
           ],
           "varname": "hearth_flux",
           "parameter_enable": 1,
@@ -930,6 +1773,30 @@
           "annotation": "Adds a path-dependent flux lane for tape-like movement and memory in the saturation.",
           "hint": "Adds a path-dependent flux lane for tape-like movement and memory in the saturation.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            0.58,
+            0.52,
+            1,
+            1
+          ],
+          "bordercolor": [
+            0.58,
+            0.52,
+            1,
+            0.55
+          ],
+          "focusbordercolor": [
+            0.58,
+            0.52,
+            1,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Flux",
@@ -947,12 +1814,60 @@
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
-          "valuepopuplabel": 3
+          "valuepopuplabel": 3,
+          "dialcolor": [
+            0.035,
+            0.033,
+            0.031,
+            1
+          ],
+          "fgdialcolor": [
+            0.58,
+            0.52,
+            1,
+            0.45
+          ],
+          "activedialcolor": [
+            0.05,
+            0.046,
+            0.042,
+            1
+          ],
+          "activefgdialcolor": [
+            0.58,
+            0.52,
+            1,
+            1
+          ],
+          "needlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            0.72
+          ],
+          "activeneedlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "panelcolor": [
+            0.018,
+            0.017,
+            0.016,
+            0.86
+          ],
+          "tricolor": [
+            0.58,
+            0.52,
+            1,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-38",
+          "id": "obj-56",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -972,7 +1887,7 @@
       },
       {
         "box": {
-          "id": "obj-39",
+          "id": "obj-57",
           "maxclass": "newobj",
           "text": "scale 0 100 0. 1.",
           "numinlets": 6,
@@ -990,7 +1905,7 @@
       },
       {
         "box": {
-          "id": "obj-40",
+          "id": "obj-58",
           "maxclass": "message",
           "text": "flux $1",
           "numinlets": 2,
@@ -1008,7 +1923,7 @@
       },
       {
         "box": {
-          "id": "obj-41",
+          "id": "obj-59",
           "maxclass": "newobj",
           "text": "loadmess 18",
           "numinlets": 1,
@@ -1026,7 +1941,7 @@
       },
       {
         "box": {
-          "id": "obj-42",
+          "id": "obj-60",
           "maxclass": "comment",
           "text": "Bias",
           "patching_rect": [
@@ -1037,24 +1952,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            324,
-            26,
-            70,
-            13
+            253,
+            38,
+            40,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            1,
+            0.54,
+            0.69,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-43",
+          "id": "obj-61",
           "maxclass": "live.dial",
           "numinlets": 1,
           "numoutlets": 2,
@@ -1070,10 +1985,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            338,
-            43,
-            42,
-            52
+            257,
+            57,
+            36,
+            48
           ],
           "varname": "hearth_bias",
           "parameter_enable": 1,
@@ -1081,6 +1996,30 @@
           "annotation": "Asymmetry bias for the saturation curve. Use subtle amounts for richer even-harmonic color.",
           "hint": "Asymmetry bias for the saturation curve. Use subtle amounts for richer even-harmonic color.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            1,
+            0.54,
+            0.69,
+            1
+          ],
+          "bordercolor": [
+            1,
+            0.54,
+            0.69,
+            0.55
+          ],
+          "focusbordercolor": [
+            1,
+            0.54,
+            0.69,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Bias",
@@ -1098,12 +2037,60 @@
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
-          "valuepopuplabel": 3
+          "valuepopuplabel": 3,
+          "dialcolor": [
+            0.035,
+            0.033,
+            0.031,
+            1
+          ],
+          "fgdialcolor": [
+            1,
+            0.54,
+            0.69,
+            0.45
+          ],
+          "activedialcolor": [
+            0.05,
+            0.046,
+            0.042,
+            1
+          ],
+          "activefgdialcolor": [
+            1,
+            0.54,
+            0.69,
+            1
+          ],
+          "needlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            0.72
+          ],
+          "activeneedlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "panelcolor": [
+            0.018,
+            0.017,
+            0.016,
+            0.86
+          ],
+          "tricolor": [
+            1,
+            0.54,
+            0.69,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-44",
+          "id": "obj-62",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -1123,7 +2110,7 @@
       },
       {
         "box": {
-          "id": "obj-45",
+          "id": "obj-63",
           "maxclass": "newobj",
           "text": "scale -25 25 -0.25 0.25",
           "numinlets": 6,
@@ -1141,7 +2128,7 @@
       },
       {
         "box": {
-          "id": "obj-46",
+          "id": "obj-64",
           "maxclass": "message",
           "text": "bias $1",
           "numinlets": 2,
@@ -1159,7 +2146,7 @@
       },
       {
         "box": {
-          "id": "obj-47",
+          "id": "obj-65",
           "maxclass": "newobj",
           "text": "loadmess 4",
           "numinlets": 1,
@@ -1177,7 +2164,7 @@
       },
       {
         "box": {
-          "id": "obj-48",
+          "id": "obj-66",
           "maxclass": "comment",
           "text": "Adapt",
           "patching_rect": [
@@ -1188,24 +2175,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            298,
-            99,
-            70,
-            13
+            478,
+            38,
+            48,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            0.38,
+            0.86,
+            0.74,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-49",
+          "id": "obj-67",
           "maxclass": "live.dial",
           "numinlets": 1,
           "numoutlets": 2,
@@ -1221,10 +2208,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            312,
-            116,
-            42,
-            52
+            485,
+            56,
+            36,
+            48
           ],
           "varname": "hearth_adapt",
           "parameter_enable": 1,
@@ -1232,6 +2219,30 @@
           "annotation": "Adaptive protection amount. Higher values back off harshness when the source gets bright or rough.",
           "hint": "Adaptive protection amount. Higher values back off harshness when the source gets bright or rough.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            0.38,
+            0.86,
+            0.74,
+            1
+          ],
+          "bordercolor": [
+            0.38,
+            0.86,
+            0.74,
+            0.55
+          ],
+          "focusbordercolor": [
+            0.38,
+            0.86,
+            0.74,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Adapt",
@@ -1249,12 +2260,60 @@
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
-          "valuepopuplabel": 3
+          "valuepopuplabel": 3,
+          "dialcolor": [
+            0.035,
+            0.033,
+            0.031,
+            1
+          ],
+          "fgdialcolor": [
+            0.38,
+            0.86,
+            0.74,
+            0.45
+          ],
+          "activedialcolor": [
+            0.05,
+            0.046,
+            0.042,
+            1
+          ],
+          "activefgdialcolor": [
+            0.38,
+            0.86,
+            0.74,
+            1
+          ],
+          "needlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            0.72
+          ],
+          "activeneedlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "panelcolor": [
+            0.018,
+            0.017,
+            0.016,
+            0.86
+          ],
+          "tricolor": [
+            0.38,
+            0.86,
+            0.74,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-50",
+          "id": "obj-68",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -1274,7 +2333,7 @@
       },
       {
         "box": {
-          "id": "obj-51",
+          "id": "obj-69",
           "maxclass": "newobj",
           "text": "scale 0 100 0. 1.",
           "numinlets": 6,
@@ -1292,7 +2351,7 @@
       },
       {
         "box": {
-          "id": "obj-52",
+          "id": "obj-70",
           "maxclass": "message",
           "text": "adapt $1",
           "numinlets": 2,
@@ -1310,7 +2369,7 @@
       },
       {
         "box": {
-          "id": "obj-53",
+          "id": "obj-71",
           "maxclass": "newobj",
           "text": "loadmess 62",
           "numinlets": 1,
@@ -1328,7 +2387,7 @@
       },
       {
         "box": {
-          "id": "obj-54",
+          "id": "obj-72",
           "maxclass": "comment",
           "text": "Detail",
           "patching_rect": [
@@ -1339,24 +2398,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            460,
-            26,
-            70,
-            13
+            526,
+            104,
+            48,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            0.73,
+            0.9,
+            0.62,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-55",
+          "id": "obj-73",
           "maxclass": "live.dial",
           "numinlets": 1,
           "numoutlets": 2,
@@ -1372,10 +2431,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            474,
-            43,
-            42,
-            52
+            532,
+            119,
+            36,
+            48
           ],
           "varname": "hearth_detail",
           "parameter_enable": 1,
@@ -1383,6 +2442,30 @@
           "annotation": "Restores a little presence after smoothing. Raise it when the result needs more articulation.",
           "hint": "Restores a little presence after smoothing. Raise it when the result needs more articulation.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            0.73,
+            0.9,
+            0.62,
+            1
+          ],
+          "bordercolor": [
+            0.73,
+            0.9,
+            0.62,
+            0.55
+          ],
+          "focusbordercolor": [
+            0.73,
+            0.9,
+            0.62,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Detail",
@@ -1400,12 +2483,60 @@
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
-          "valuepopuplabel": 3
+          "valuepopuplabel": 3,
+          "dialcolor": [
+            0.035,
+            0.033,
+            0.031,
+            1
+          ],
+          "fgdialcolor": [
+            0.73,
+            0.9,
+            0.62,
+            0.45
+          ],
+          "activedialcolor": [
+            0.05,
+            0.046,
+            0.042,
+            1
+          ],
+          "activefgdialcolor": [
+            0.73,
+            0.9,
+            0.62,
+            1
+          ],
+          "needlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            0.72
+          ],
+          "activeneedlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "panelcolor": [
+            0.018,
+            0.017,
+            0.016,
+            0.86
+          ],
+          "tricolor": [
+            0.73,
+            0.9,
+            0.62,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-56",
+          "id": "obj-74",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -1425,7 +2556,7 @@
       },
       {
         "box": {
-          "id": "obj-57",
+          "id": "obj-75",
           "maxclass": "newobj",
           "text": "scale 0 100 0. 1.",
           "numinlets": 6,
@@ -1443,7 +2574,7 @@
       },
       {
         "box": {
-          "id": "obj-58",
+          "id": "obj-76",
           "maxclass": "message",
           "text": "detail $1",
           "numinlets": 2,
@@ -1461,7 +2592,7 @@
       },
       {
         "box": {
-          "id": "obj-59",
+          "id": "obj-77",
           "maxclass": "newobj",
           "text": "loadmess 58",
           "numinlets": 1,
@@ -1479,7 +2610,7 @@
       },
       {
         "box": {
-          "id": "obj-60",
+          "id": "obj-78",
           "maxclass": "comment",
           "text": "Dyn",
           "patching_rect": [
@@ -1490,24 +2621,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            528,
-            26,
-            70,
-            13
+            526,
+            38,
+            48,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            0.72,
+            0.61,
+            0.94,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-61",
+          "id": "obj-79",
           "maxclass": "live.dial",
           "numinlets": 1,
           "numoutlets": 2,
@@ -1523,10 +2654,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            542,
-            43,
-            42,
-            52
+            532,
+            56,
+            36,
+            48
           ],
           "varname": "hearth_dynamics",
           "parameter_enable": 1,
@@ -1534,6 +2665,30 @@
           "annotation": "Makes drive respond to level and envelope. Higher values push loud passages more dynamically.",
           "hint": "Makes drive respond to level and envelope. Higher values push loud passages more dynamically.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            0.72,
+            0.61,
+            0.94,
+            1
+          ],
+          "bordercolor": [
+            0.72,
+            0.61,
+            0.94,
+            0.55
+          ],
+          "focusbordercolor": [
+            0.72,
+            0.61,
+            0.94,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Dynamics",
@@ -1551,12 +2706,60 @@
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
-          "valuepopuplabel": 3
+          "valuepopuplabel": 3,
+          "dialcolor": [
+            0.035,
+            0.033,
+            0.031,
+            1
+          ],
+          "fgdialcolor": [
+            0.72,
+            0.61,
+            0.94,
+            0.45
+          ],
+          "activedialcolor": [
+            0.05,
+            0.046,
+            0.042,
+            1
+          ],
+          "activefgdialcolor": [
+            0.72,
+            0.61,
+            0.94,
+            1
+          ],
+          "needlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            0.72
+          ],
+          "activeneedlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "panelcolor": [
+            0.018,
+            0.017,
+            0.016,
+            0.86
+          ],
+          "tricolor": [
+            0.72,
+            0.61,
+            0.94,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-62",
+          "id": "obj-80",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -1576,7 +2779,7 @@
       },
       {
         "box": {
-          "id": "obj-63",
+          "id": "obj-81",
           "maxclass": "newobj",
           "text": "scale 0 100 0. 1.",
           "numinlets": 6,
@@ -1594,7 +2797,7 @@
       },
       {
         "box": {
-          "id": "obj-64",
+          "id": "obj-82",
           "maxclass": "message",
           "text": "dynamics $1",
           "numinlets": 2,
@@ -1612,7 +2815,7 @@
       },
       {
         "box": {
-          "id": "obj-65",
+          "id": "obj-83",
           "maxclass": "newobj",
           "text": "loadmess 42",
           "numinlets": 1,
@@ -1630,7 +2833,7 @@
       },
       {
         "box": {
-          "id": "obj-66",
+          "id": "obj-84",
           "maxclass": "comment",
           "text": "Recovery",
           "patching_rect": [
@@ -1641,24 +2844,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            596,
-            26,
-            70,
-            13
+            574,
+            38,
+            56,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            0.72,
+            0.61,
+            0.94,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-67",
+          "id": "obj-85",
           "maxclass": "live.dial",
           "numinlets": 1,
           "numoutlets": 2,
@@ -1674,10 +2877,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            610,
-            43,
-            42,
-            52
+            583,
+            56,
+            36,
+            48
           ],
           "varname": "hearth_recovery",
           "parameter_enable": 1,
@@ -1685,6 +2888,30 @@
           "annotation": "Envelope recovery time in milliseconds for adaptive drive and flux movement.",
           "hint": "Envelope recovery time in milliseconds for adaptive drive and flux movement.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            0.72,
+            0.61,
+            0.94,
+            1
+          ],
+          "bordercolor": [
+            0.72,
+            0.61,
+            0.94,
+            0.55
+          ],
+          "focusbordercolor": [
+            0.72,
+            0.61,
+            0.94,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Recovery ms",
@@ -1703,12 +2930,60 @@
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
-          "valuepopuplabel": 3
+          "valuepopuplabel": 3,
+          "dialcolor": [
+            0.035,
+            0.033,
+            0.031,
+            1
+          ],
+          "fgdialcolor": [
+            0.72,
+            0.61,
+            0.94,
+            0.45
+          ],
+          "activedialcolor": [
+            0.05,
+            0.046,
+            0.042,
+            1
+          ],
+          "activefgdialcolor": [
+            0.72,
+            0.61,
+            0.94,
+            1
+          ],
+          "needlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            0.72
+          ],
+          "activeneedlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "panelcolor": [
+            0.018,
+            0.017,
+            0.016,
+            0.86
+          ],
+          "tricolor": [
+            0.72,
+            0.61,
+            0.94,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-68",
+          "id": "obj-86",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -1728,7 +3003,7 @@
       },
       {
         "box": {
-          "id": "obj-69",
+          "id": "obj-87",
           "maxclass": "message",
           "text": "recovery $1",
           "numinlets": 2,
@@ -1746,7 +3021,7 @@
       },
       {
         "box": {
-          "id": "obj-70",
+          "id": "obj-88",
           "maxclass": "newobj",
           "text": "loadmess 140",
           "numinlets": 1,
@@ -1764,7 +3039,7 @@
       },
       {
         "box": {
-          "id": "obj-71",
+          "id": "obj-89",
           "maxclass": "comment",
           "text": "Stereo",
           "patching_rect": [
@@ -1775,24 +3050,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            372,
-            99,
-            70,
-            13
+            574,
+            104,
+            56,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            0.38,
+            0.86,
+            0.74,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-72",
+          "id": "obj-90",
           "maxclass": "live.dial",
           "numinlets": 1,
           "numoutlets": 2,
@@ -1808,10 +3083,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            386,
-            116,
-            42,
-            52
+            583,
+            119,
+            36,
+            48
           ],
           "varname": "hearth_stereoProtect",
           "parameter_enable": 1,
@@ -1819,6 +3094,30 @@
           "annotation": "Keeps the side channel from overdriving relative to the center, preserving stereo stability.",
           "hint": "Keeps the side channel from overdriving relative to the center, preserving stereo stability.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            0.38,
+            0.86,
+            0.74,
+            1
+          ],
+          "bordercolor": [
+            0.38,
+            0.86,
+            0.74,
+            0.55
+          ],
+          "focusbordercolor": [
+            0.38,
+            0.86,
+            0.74,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Stereo",
@@ -1836,12 +3135,60 @@
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
-          "valuepopuplabel": 3
+          "valuepopuplabel": 3,
+          "dialcolor": [
+            0.035,
+            0.033,
+            0.031,
+            1
+          ],
+          "fgdialcolor": [
+            0.38,
+            0.86,
+            0.74,
+            0.45
+          ],
+          "activedialcolor": [
+            0.05,
+            0.046,
+            0.042,
+            1
+          ],
+          "activefgdialcolor": [
+            0.38,
+            0.86,
+            0.74,
+            1
+          ],
+          "needlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            0.72
+          ],
+          "activeneedlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "panelcolor": [
+            0.018,
+            0.017,
+            0.016,
+            0.86
+          ],
+          "tricolor": [
+            0.38,
+            0.86,
+            0.74,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-73",
+          "id": "obj-91",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -1861,7 +3208,7 @@
       },
       {
         "box": {
-          "id": "obj-74",
+          "id": "obj-92",
           "maxclass": "newobj",
           "text": "scale 0 100 0. 1.",
           "numinlets": 6,
@@ -1879,7 +3226,7 @@
       },
       {
         "box": {
-          "id": "obj-75",
+          "id": "obj-93",
           "maxclass": "message",
           "text": "stereoProtect $1",
           "numinlets": 2,
@@ -1897,7 +3244,7 @@
       },
       {
         "box": {
-          "id": "obj-76",
+          "id": "obj-94",
           "maxclass": "newobj",
           "text": "loadmess 70",
           "numinlets": 1,
@@ -1915,7 +3262,7 @@
       },
       {
         "box": {
-          "id": "obj-77",
+          "id": "obj-95",
           "maxclass": "comment",
           "text": "Mix",
           "patching_rect": [
@@ -1926,24 +3273,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            446,
-            99,
-            70,
-            13
+            647,
+            40,
+            42,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            0.92,
+            0.88,
+            0.74,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-78",
+          "id": "obj-96",
           "maxclass": "live.dial",
           "numinlets": 1,
           "numoutlets": 2,
@@ -1959,10 +3306,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            460,
-            116,
-            42,
-            52
+            651,
+            58,
+            36,
+            48
           ],
           "varname": "hearth_mix",
           "parameter_enable": 1,
@@ -1970,6 +3317,30 @@
           "annotation": "Wet/dry blend between the input and Hearth's processed signal.",
           "hint": "Wet/dry blend between the input and Hearth's processed signal.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            0.92,
+            0.88,
+            0.74,
+            1
+          ],
+          "bordercolor": [
+            0.92,
+            0.88,
+            0.74,
+            0.55
+          ],
+          "focusbordercolor": [
+            0.92,
+            0.88,
+            0.74,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Mix",
@@ -1988,12 +3359,60 @@
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
-          "valuepopuplabel": 3
+          "valuepopuplabel": 3,
+          "dialcolor": [
+            0.035,
+            0.033,
+            0.031,
+            1
+          ],
+          "fgdialcolor": [
+            0.92,
+            0.88,
+            0.74,
+            0.45
+          ],
+          "activedialcolor": [
+            0.05,
+            0.046,
+            0.042,
+            1
+          ],
+          "activefgdialcolor": [
+            0.92,
+            0.88,
+            0.74,
+            1
+          ],
+          "needlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            0.72
+          ],
+          "activeneedlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "panelcolor": [
+            0.018,
+            0.017,
+            0.016,
+            0.86
+          ],
+          "tricolor": [
+            0.92,
+            0.88,
+            0.74,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-79",
+          "id": "obj-97",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -2013,7 +3432,7 @@
       },
       {
         "box": {
-          "id": "obj-80",
+          "id": "obj-98",
           "maxclass": "newobj",
           "text": "scale 0 100 0. 1.",
           "numinlets": 6,
@@ -2031,7 +3450,7 @@
       },
       {
         "box": {
-          "id": "obj-81",
+          "id": "obj-99",
           "maxclass": "message",
           "text": "mix $1",
           "numinlets": 2,
@@ -2049,7 +3468,7 @@
       },
       {
         "box": {
-          "id": "obj-82",
+          "id": "obj-100",
           "maxclass": "newobj",
           "text": "loadmess 100",
           "numinlets": 1,
@@ -2067,7 +3486,7 @@
       },
       {
         "box": {
-          "id": "obj-83",
+          "id": "obj-101",
           "maxclass": "comment",
           "text": "Output dB",
           "patching_rect": [
@@ -2078,24 +3497,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            664,
-            26,
-            70,
-            13
+            698,
+            40,
+            48,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            0.92,
+            0.88,
+            0.74,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-84",
+          "id": "obj-102",
           "maxclass": "live.dial",
           "numinlets": 1,
           "numoutlets": 2,
@@ -2111,10 +3530,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            678,
-            43,
-            42,
-            52
+            704,
+            58,
+            36,
+            48
           ],
           "varname": "hearth_output",
           "parameter_enable": 1,
@@ -2122,6 +3541,30 @@
           "annotation": "Output trim after processing. Use this to level-match the processed signal.",
           "hint": "Output trim after processing. Use this to level-match the processed signal.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            0.92,
+            0.88,
+            0.74,
+            1
+          ],
+          "bordercolor": [
+            0.92,
+            0.88,
+            0.74,
+            0.55
+          ],
+          "focusbordercolor": [
+            0.92,
+            0.88,
+            0.74,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Output dB",
@@ -2140,12 +3583,60 @@
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
-          "valuepopuplabel": 3
+          "valuepopuplabel": 3,
+          "dialcolor": [
+            0.035,
+            0.033,
+            0.031,
+            1
+          ],
+          "fgdialcolor": [
+            0.92,
+            0.88,
+            0.74,
+            0.45
+          ],
+          "activedialcolor": [
+            0.05,
+            0.046,
+            0.042,
+            1
+          ],
+          "activefgdialcolor": [
+            0.92,
+            0.88,
+            0.74,
+            1
+          ],
+          "needlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            0.72
+          ],
+          "activeneedlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "panelcolor": [
+            0.018,
+            0.017,
+            0.016,
+            0.86
+          ],
+          "tricolor": [
+            0.92,
+            0.88,
+            0.74,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-85",
+          "id": "obj-103",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -2165,7 +3656,7 @@
       },
       {
         "box": {
-          "id": "obj-86",
+          "id": "obj-104",
           "maxclass": "message",
           "text": "output $1",
           "numinlets": 2,
@@ -2183,7 +3674,7 @@
       },
       {
         "box": {
-          "id": "obj-87",
+          "id": "obj-105",
           "maxclass": "newobj",
           "text": "loadmess 0",
           "numinlets": 1,
@@ -2201,7 +3692,7 @@
       },
       {
         "box": {
-          "id": "obj-88",
+          "id": "obj-106",
           "maxclass": "comment",
           "text": "Quality",
           "patching_rect": [
@@ -2212,30 +3703,30 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            520,
-            99,
-            70,
-            13
+            408,
+            42,
+            58,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            1,
+            0.64,
+            0.31,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-89",
+          "id": "obj-107",
           "maxclass": "live.menu",
           "numinlets": 1,
           "numoutlets": 3,
           "outlettype": [
-            "",
-            "",
+            "int",
+            "anything",
             "float"
           ],
           "patching_rect": [
@@ -2246,10 +3737,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            520,
-            126,
-            68,
-            20
+            410,
+            72,
+            58,
+            19
           ],
           "varname": "hearth_quality",
           "parameter_enable": 1,
@@ -2257,6 +3748,30 @@
           "annotation": "Anti-aliasing quality for the tube lane: Eco, Live, or High. Higher quality costs more CPU.",
           "hint": "Anti-aliasing quality for the tube lane: Eco, Live, or High. Higher quality costs more CPU.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            1,
+            0.64,
+            0.31,
+            1
+          ],
+          "bordercolor": [
+            1,
+            0.64,
+            0.31,
+            0.55
+          ],
+          "focusbordercolor": [
+            1,
+            0.64,
+            0.31,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Quality",
@@ -2280,12 +3795,42 @@
             "Eco",
             "Live",
             "High"
+          ],
+          "activebgcolor": [
+            0.055,
+            0.052,
+            0.048,
+            1
+          ],
+          "hltcolor": [
+            1,
+            0.64,
+            0.31,
+            1
+          ],
+          "hlttextcolor": [
+            0.075,
+            0.067,
+            0.058,
+            1
+          ],
+          "tricolor": [
+            1,
+            0.64,
+            0.31,
+            1
+          ],
+          "bgcolor": [
+            0.045,
+            0.042,
+            0.039,
+            1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-90",
+          "id": "obj-108",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -2305,7 +3850,7 @@
       },
       {
         "box": {
-          "id": "obj-91",
+          "id": "obj-109",
           "maxclass": "message",
           "text": "quality $1",
           "numinlets": 2,
@@ -2323,7 +3868,7 @@
       },
       {
         "box": {
-          "id": "obj-92",
+          "id": "obj-110",
           "maxclass": "newobj",
           "text": "loadmess 1",
           "numinlets": 1,
@@ -2341,7 +3886,7 @@
       },
       {
         "box": {
-          "id": "obj-93",
+          "id": "obj-111",
           "maxclass": "comment",
           "text": "Auto",
           "patching_rect": [
@@ -2352,24 +3897,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            594,
-            99,
-            70,
-            13
+            669,
+            115,
+            48,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            0.92,
+            0.88,
+            0.74,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-94",
+          "id": "obj-112",
           "maxclass": "live.toggle",
           "numinlets": 1,
           "numoutlets": 2,
@@ -2385,10 +3930,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            617,
-            121,
-            25,
-            25
+            681,
+            132,
+            24,
+            24
           ],
           "varname": "hearth_autoTrim",
           "parameter_enable": 1,
@@ -2396,6 +3941,30 @@
           "annotation": "Automatically compensates output level against the input envelope for easier level matching.",
           "hint": "Automatically compensates output level against the input envelope for easier level matching.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            0.92,
+            0.88,
+            0.74,
+            1
+          ],
+          "bordercolor": [
+            0.92,
+            0.88,
+            0.74,
+            0.55
+          ],
+          "focusbordercolor": [
+            0.92,
+            0.88,
+            0.74,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Auto Trim",
@@ -2413,12 +3982,36 @@
                 "On"
               ]
             }
-          }
+          },
+          "activebgcolor": [
+            0.045,
+            0.042,
+            0.039,
+            1
+          ],
+          "activebgoncolor": [
+            0.92,
+            0.88,
+            0.74,
+            1
+          ],
+          "bgcolor": [
+            0.045,
+            0.042,
+            0.039,
+            1
+          ],
+          "bgoncolor": [
+            0.92,
+            0.88,
+            0.74,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-95",
+          "id": "obj-113",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -2438,7 +4031,7 @@
       },
       {
         "box": {
-          "id": "obj-96",
+          "id": "obj-114",
           "maxclass": "message",
           "text": "autoTrim $1",
           "numinlets": 2,
@@ -2456,7 +4049,7 @@
       },
       {
         "box": {
-          "id": "obj-97",
+          "id": "obj-115",
           "maxclass": "newobj",
           "text": "loadmess 1",
           "numinlets": 1,
@@ -2474,7 +4067,7 @@
       },
       {
         "box": {
-          "id": "obj-98",
+          "id": "obj-116",
           "maxclass": "comment",
           "text": "Patina",
           "patching_rect": [
@@ -2485,24 +4078,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            668,
-            99,
-            70,
-            13
+            409,
+            106,
+            58,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
-            0.78,
-            0.68,
+            0.7,
+            0.62,
+            0.48,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-99",
+          "id": "obj-117",
           "maxclass": "live.dial",
           "numinlets": 1,
           "numoutlets": 2,
@@ -2518,10 +4111,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            682,
-            116,
-            42,
-            52
+            417,
+            120,
+            36,
+            48
           ],
           "varname": "hearth_patina",
           "parameter_enable": 1,
@@ -2529,6 +4122,30 @@
           "annotation": "Adds a very subtle deterministic low-level texture. Keep low for clean material.",
           "hint": "Adds a very subtle deterministic low-level texture. Keep low for clean material.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            0.7,
+            0.62,
+            0.48,
+            1
+          ],
+          "bordercolor": [
+            0.7,
+            0.62,
+            0.48,
+            0.55
+          ],
+          "focusbordercolor": [
+            0.7,
+            0.62,
+            0.48,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Patina",
@@ -2546,12 +4163,60 @@
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
-          "valuepopuplabel": 3
+          "valuepopuplabel": 3,
+          "dialcolor": [
+            0.035,
+            0.033,
+            0.031,
+            1
+          ],
+          "fgdialcolor": [
+            0.7,
+            0.62,
+            0.48,
+            0.45
+          ],
+          "activedialcolor": [
+            0.05,
+            0.046,
+            0.042,
+            1
+          ],
+          "activefgdialcolor": [
+            0.7,
+            0.62,
+            0.48,
+            1
+          ],
+          "needlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            0.72
+          ],
+          "activeneedlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "panelcolor": [
+            0.018,
+            0.017,
+            0.016,
+            0.86
+          ],
+          "tricolor": [
+            0.7,
+            0.62,
+            0.48,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-100",
+          "id": "obj-118",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -2571,7 +4236,7 @@
       },
       {
         "box": {
-          "id": "obj-101",
+          "id": "obj-119",
           "maxclass": "newobj",
           "text": "scale 0 10 0. 1.",
           "numinlets": 6,
@@ -2589,7 +4254,7 @@
       },
       {
         "box": {
-          "id": "obj-102",
+          "id": "obj-120",
           "maxclass": "message",
           "text": "patina $1",
           "numinlets": 2,
@@ -2607,7 +4272,7 @@
       },
       {
         "box": {
-          "id": "obj-103",
+          "id": "obj-121",
           "maxclass": "newobj",
           "text": "loadmess 0",
           "numinlets": 1,
@@ -2625,7 +4290,7 @@
       },
       {
         "box": {
-          "id": "obj-104",
+          "id": "obj-122",
           "maxclass": "comment",
           "text": "Input dB",
           "patching_rect": [
@@ -2636,24 +4301,24 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            120,
-            26,
-            70,
-            13
+            112,
+            38,
+            45,
+            12
           ],
           "fontsize": 9,
           "textjustification": 1,
           "textcolor": [
-            0.84,
+            0.56,
             0.78,
-            0.68,
+            0.96,
             1
           ]
         }
       },
       {
         "box": {
-          "id": "obj-105",
+          "id": "obj-123",
           "maxclass": "live.dial",
           "numinlets": 1,
           "numoutlets": 2,
@@ -2669,10 +4334,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            134,
-            43,
-            42,
-            52
+            118,
+            57,
+            36,
+            48
           ],
           "varname": "hearth_input",
           "parameter_enable": 1,
@@ -2680,6 +4345,30 @@
           "annotation": "Input trim before the saturation core. Use this to hit Hearth harder or back off hot material.",
           "hint": "Input trim before the saturation core. Use this to hit Hearth harder or back off hot material.",
           "fontsize": 9,
+          "textcolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "color": [
+            0.56,
+            0.78,
+            0.96,
+            1
+          ],
+          "bordercolor": [
+            0.56,
+            0.78,
+            0.96,
+            0.55
+          ],
+          "focusbordercolor": [
+            0.56,
+            0.78,
+            0.96,
+            1
+          ],
           "saved_attribute_attributes": {
             "valueof": {
               "parameter_longname": "Input dB",
@@ -2698,12 +4387,60 @@
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
-          "valuepopuplabel": 3
+          "valuepopuplabel": 3,
+          "dialcolor": [
+            0.035,
+            0.033,
+            0.031,
+            1
+          ],
+          "fgdialcolor": [
+            0.56,
+            0.78,
+            0.96,
+            0.45
+          ],
+          "activedialcolor": [
+            0.05,
+            0.046,
+            0.042,
+            1
+          ],
+          "activefgdialcolor": [
+            0.56,
+            0.78,
+            0.96,
+            1
+          ],
+          "needlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            0.72
+          ],
+          "activeneedlecolor": [
+            0.88,
+            0.82,
+            0.72,
+            1
+          ],
+          "panelcolor": [
+            0.018,
+            0.017,
+            0.016,
+            0.86
+          ],
+          "tricolor": [
+            0.56,
+            0.78,
+            0.96,
+            1
+          ]
         }
       },
       {
         "box": {
-          "id": "obj-106",
+          "id": "obj-124",
           "maxclass": "flonum",
           "numinlets": 1,
           "numoutlets": 2,
@@ -2723,7 +4460,7 @@
       },
       {
         "box": {
-          "id": "obj-107",
+          "id": "obj-125",
           "maxclass": "message",
           "text": "input $1",
           "numinlets": 2,
@@ -2741,7 +4478,7 @@
       },
       {
         "box": {
-          "id": "obj-108",
+          "id": "obj-126",
           "maxclass": "newobj",
           "text": "loadmess 0",
           "numinlets": 1,
@@ -2762,11 +4499,11 @@
       {
         "patchline": {
           "source": [
-            "obj-6",
+            "obj-24",
             0
           ],
           "destination": [
-            "obj-7",
+            "obj-25",
             0
           ]
         }
@@ -2774,156 +4511,12 @@
       {
         "patchline": {
           "source": [
-            "obj-6",
+            "obj-24",
             1
           ],
           "destination": [
-            "obj-7",
+            "obj-25",
             1
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-7",
-            0
-          ],
-          "destination": [
-            "obj-8",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-7",
-            1
-          ],
-          "destination": [
-            "obj-8",
-            1
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-11",
-            0
-          ],
-          "destination": [
-            "obj-12",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-14",
-            0
-          ],
-          "destination": [
-            "obj-15",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-14",
-            0
-          ],
-          "destination": [
-            "obj-16",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-16",
-            0
-          ],
-          "destination": [
-            "obj-17",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-17",
-            0
-          ],
-          "destination": [
-            "obj-7",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-18",
-            0
-          ],
-          "destination": [
-            "obj-14",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-20",
-            0
-          ],
-          "destination": [
-            "obj-21",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-20",
-            0
-          ],
-          "destination": [
-            "obj-22",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-22",
-            0
-          ],
-          "destination": [
-            "obj-7",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-23",
-            0
-          ],
-          "destination": [
-            "obj-20",
-            0
           ]
         }
       },
@@ -2943,35 +4536,11 @@
         "patchline": {
           "source": [
             "obj-25",
-            0
+            1
           ],
           "destination": [
-            "obj-27",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-27",
-            0
-          ],
-          "destination": [
-            "obj-28",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-28",
-            0
-          ],
-          "destination": [
-            "obj-7",
-            0
+            "obj-26",
+            1
           ]
         }
       },
@@ -2982,7 +4551,7 @@
             0
           ],
           "destination": [
-            "obj-25",
+            "obj-30",
             0
           ]
         }
@@ -2990,20 +4559,8 @@
       {
         "patchline": {
           "source": [
-            "obj-31",
-            0
-          ],
-          "destination": [
             "obj-32",
             0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-31",
-            0
           ],
           "destination": [
             "obj-33",
@@ -3014,7 +4571,7 @@
       {
         "patchline": {
           "source": [
-            "obj-33",
+            "obj-32",
             0
           ],
           "destination": [
@@ -3030,7 +4587,7 @@
             0
           ],
           "destination": [
-            "obj-7",
+            "obj-35",
             0
           ]
         }
@@ -3042,7 +4599,7 @@
             0
           ],
           "destination": [
-            "obj-31",
+            "obj-25",
             0
           ]
         }
@@ -3050,20 +4607,20 @@
       {
         "patchline": {
           "source": [
-            "obj-37",
+            "obj-36",
             0
           ],
           "destination": [
+            "obj-32",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
             "obj-38",
             0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-37",
-            0
           ],
           "destination": [
             "obj-39",
@@ -3074,7 +4631,7 @@
       {
         "patchline": {
           "source": [
-            "obj-39",
+            "obj-38",
             0
           ],
           "destination": [
@@ -3090,7 +4647,7 @@
             0
           ],
           "destination": [
-            "obj-7",
+            "obj-25",
             0
           ]
         }
@@ -3102,7 +4659,7 @@
             0
           ],
           "destination": [
-            "obj-37",
+            "obj-38",
             0
           ]
         }
@@ -3150,7 +4707,7 @@
             0
           ],
           "destination": [
-            "obj-7",
+            "obj-25",
             0
           ]
         }
@@ -3210,7 +4767,7 @@
             0
           ],
           "destination": [
-            "obj-7",
+            "obj-25",
             0
           ]
         }
@@ -3270,7 +4827,7 @@
             0
           ],
           "destination": [
-            "obj-7",
+            "obj-25",
             0
           ]
         }
@@ -3330,7 +4887,7 @@
             0
           ],
           "destination": [
-            "obj-7",
+            "obj-25",
             0
           ]
         }
@@ -3378,7 +4935,7 @@
             0
           ],
           "destination": [
-            "obj-7",
+            "obj-70",
             0
           ]
         }
@@ -3390,6 +4947,18 @@
             0
           ],
           "destination": [
+            "obj-25",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-71",
+            0
+          ],
+          "destination": [
             "obj-67",
             0
           ]
@@ -3398,20 +4967,8 @@
       {
         "patchline": {
           "source": [
-            "obj-72",
-            0
-          ],
-          "destination": [
             "obj-73",
             0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-72",
-            0
           ],
           "destination": [
             "obj-74",
@@ -3422,7 +4979,7 @@
       {
         "patchline": {
           "source": [
-            "obj-74",
+            "obj-73",
             0
           ],
           "destination": [
@@ -3438,7 +4995,7 @@
             0
           ],
           "destination": [
-            "obj-7",
+            "obj-76",
             0
           ]
         }
@@ -3450,7 +5007,7 @@
             0
           ],
           "destination": [
-            "obj-72",
+            "obj-25",
             0
           ]
         }
@@ -3458,20 +5015,20 @@
       {
         "patchline": {
           "source": [
-            "obj-78",
+            "obj-77",
             0
           ],
           "destination": [
+            "obj-73",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
             "obj-79",
             0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-78",
-            0
           ],
           "destination": [
             "obj-80",
@@ -3482,7 +5039,7 @@
       {
         "patchline": {
           "source": [
-            "obj-80",
+            "obj-79",
             0
           ],
           "destination": [
@@ -3498,7 +5055,7 @@
             0
           ],
           "destination": [
-            "obj-7",
+            "obj-82",
             0
           ]
         }
@@ -3510,7 +5067,7 @@
             0
           ],
           "destination": [
-            "obj-78",
+            "obj-25",
             0
           ]
         }
@@ -3518,20 +5075,20 @@
       {
         "patchline": {
           "source": [
-            "obj-84",
+            "obj-83",
             0
           ],
           "destination": [
+            "obj-79",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
             "obj-85",
             0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-84",
-            0
           ],
           "destination": [
             "obj-86",
@@ -3542,11 +5099,11 @@
       {
         "patchline": {
           "source": [
-            "obj-86",
+            "obj-85",
             0
           ],
           "destination": [
-            "obj-7",
+            "obj-87",
             0
           ]
         }
@@ -3558,7 +5115,7 @@
             0
           ],
           "destination": [
-            "obj-84",
+            "obj-25",
             0
           ]
         }
@@ -3566,20 +5123,20 @@
       {
         "patchline": {
           "source": [
-            "obj-89",
+            "obj-88",
             0
           ],
           "destination": [
+            "obj-85",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
             "obj-90",
             0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-89",
-            0
           ],
           "destination": [
             "obj-91",
@@ -3590,11 +5147,11 @@
       {
         "patchline": {
           "source": [
-            "obj-91",
+            "obj-90",
             0
           ],
           "destination": [
-            "obj-7",
+            "obj-92",
             0
           ]
         }
@@ -3606,7 +5163,19 @@
             0
           ],
           "destination": [
-            "obj-89",
+            "obj-93",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-93",
+            0
+          ],
+          "destination": [
+            "obj-25",
             0
           ]
         }
@@ -3618,19 +5187,7 @@
             0
           ],
           "destination": [
-            "obj-95",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-94",
-            0
-          ],
-          "destination": [
-            "obj-96",
+            "obj-90",
             0
           ]
         }
@@ -3642,19 +5199,31 @@
             0
           ],
           "destination": [
-            "obj-7",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
             "obj-97",
             0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-96",
+            0
           ],
           "destination": [
-            "obj-94",
+            "obj-98",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-98",
+            0
+          ],
+          "destination": [
+            "obj-99",
             0
           ]
         }
@@ -3666,31 +5235,19 @@
             0
           ],
           "destination": [
+            "obj-25",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
             "obj-100",
             0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-99",
-            0
           ],
           "destination": [
-            "obj-101",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-101",
-            0
-          ],
-          "destination": [
-            "obj-102",
+            "obj-96",
             0
           ]
         }
@@ -3702,19 +5259,31 @@
             0
           ],
           "destination": [
-            "obj-7",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
             "obj-103",
             0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-102",
+            0
           ],
           "destination": [
-            "obj-99",
+            "obj-104",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-104",
+            0
+          ],
+          "destination": [
+            "obj-25",
             0
           ]
         }
@@ -3726,19 +5295,7 @@
             0
           ],
           "destination": [
-            "obj-106",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
-            "obj-105",
-            0
-          ],
-          "destination": [
-            "obj-107",
+            "obj-102",
             0
           ]
         }
@@ -3750,19 +5307,199 @@
             0
           ],
           "destination": [
-            "obj-7",
-            0
-          ]
-        }
-      },
-      {
-        "patchline": {
-          "source": [
             "obj-108",
             0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-107",
+            0
           ],
           "destination": [
-            "obj-105",
+            "obj-109",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-109",
+            0
+          ],
+          "destination": [
+            "obj-25",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-110",
+            0
+          ],
+          "destination": [
+            "obj-107",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-112",
+            0
+          ],
+          "destination": [
+            "obj-113",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-112",
+            0
+          ],
+          "destination": [
+            "obj-114",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-114",
+            0
+          ],
+          "destination": [
+            "obj-25",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-115",
+            0
+          ],
+          "destination": [
+            "obj-112",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-117",
+            0
+          ],
+          "destination": [
+            "obj-118",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-117",
+            0
+          ],
+          "destination": [
+            "obj-119",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-119",
+            0
+          ],
+          "destination": [
+            "obj-120",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-120",
+            0
+          ],
+          "destination": [
+            "obj-25",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-121",
+            0
+          ],
+          "destination": [
+            "obj-117",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-123",
+            0
+          ],
+          "destination": [
+            "obj-124",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-123",
+            0
+          ],
+          "destination": [
+            "obj-125",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-125",
+            0
+          ],
+          "destination": [
+            "obj-25",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-126",
+            0
+          ],
+          "destination": [
+            "obj-123",
             0
           ]
         }

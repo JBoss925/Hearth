@@ -156,6 +156,30 @@ const uiOrder = [
   "autoTrim",
   "patina",
 ];
+const palette = {
+  bg: [0.075, 0.067, 0.058, 1],
+  panel: [0.115, 0.103, 0.09, 1],
+  text: [0.88, 0.82, 0.72, 1],
+  muted: [0.61, 0.55, 0.47, 1],
+  input: [0.56, 0.78, 0.96, 1],
+  heat: [1.0, 0.64, 0.31, 1],
+  body: [0.95, 0.76, 0.45, 1],
+  bias: [1.0, 0.54, 0.69, 1],
+  bloom: [1.0, 0.42, 0.54, 1],
+  flux: [0.58, 0.52, 1.0, 1],
+  patina: [0.70, 0.62, 0.48, 1],
+  servo: [0.38, 0.86, 0.74, 1],
+  tone: [0.73, 0.90, 0.62, 1],
+  dynamics: [0.72, 0.61, 0.94, 1],
+  output: [0.92, 0.88, 0.74, 1],
+};
+const withAlpha = (color, alpha) => [color[0], color[1], color[2], alpha];
+const blend = (a, b, t) => [
+  a[0] * (1 - t) + b[0] * t,
+  a[1] * (1 - t) + b[1] * t,
+  a[2] * (1 - t) + b[2] * t,
+  a[3] * (1 - t) + b[3] * t,
+];
 const uiLabels = {
   input: "Input dB",
   hearth: "Hearth",
@@ -181,113 +205,132 @@ const controlMeta = {
     kind: "dial",
     info: "Input trim before the saturation core. Use this to hit Hearth harder or back off hot material.",
     unitstyle: 4,
+    color: palette.input,
   },
   hearth: {
     short: "Hearth",
     kind: "dial",
     info: "Main warmth and drive amount. Higher settings create denser saturation and stronger harmonic color.",
+    color: palette.heat,
   },
   body: {
     short: "Body",
     kind: "dial",
     info: "Low-mid body emphasis before the nonlinear stage. Positive values add weight; negative values thin the drive path.",
     unitstyle: 4,
+    color: palette.body,
   },
   bias: {
     short: "Bias",
     kind: "dial",
     info: "Asymmetry bias for the saturation curve. Use subtle amounts for richer even-harmonic color.",
+    color: palette.bias,
   },
   velvet: {
     short: "Velvet",
     kind: "dial",
     info: "Softens upper harmonics after saturation. Higher values make the tone smoother and less edgy.",
+    color: palette.tone,
   },
   detail: {
     short: "Detail",
     kind: "dial",
     info: "Restores a little presence after smoothing. Raise it when the result needs more articulation.",
+    color: palette.tone,
   },
   dynamics: {
     short: "Dyn",
     kind: "dial",
     info: "Makes drive respond to level and envelope. Higher values push loud passages more dynamically.",
+    color: palette.dynamics,
   },
   recovery: {
     short: "Recov",
     kind: "dial",
     info: "Envelope recovery time in milliseconds for adaptive drive and flux movement.",
     unitstyle: 2,
+    color: palette.dynamics,
   },
   output: {
     short: "Out",
     kind: "dial",
     info: "Output trim after processing. Use this to level-match the processed signal.",
     unitstyle: 4,
+    color: palette.output,
   },
   bloom: {
     short: "Bloom",
     kind: "dial",
     info: "Transient-local parallel density. Higher values make attacks feel fuller and more saturated.",
+    color: palette.bloom,
   },
   flux: {
     short: "Flux",
     kind: "dial",
     info: "Adds a path-dependent flux lane for tape-like movement and memory in the saturation.",
+    color: palette.flux,
   },
   adapt: {
     short: "Adapt",
     kind: "dial",
     info: "Adaptive protection amount. Higher values back off harshness when the source gets bright or rough.",
+    color: palette.servo,
   },
   stereoProtect: {
     short: "Stereo",
     kind: "dial",
     info: "Keeps the side channel from overdriving relative to the center, preserving stereo stability.",
+    color: palette.servo,
   },
   mix: {
     short: "Mix",
     kind: "dial",
     info: "Wet/dry blend between the input and Hearth's processed signal.",
     unitstyle: 5,
+    color: palette.output,
   },
   quality: {
     short: "Qual",
     kind: "menu",
     info: "Anti-aliasing quality for the tube lane: Eco, Live, or High. Higher quality costs more CPU.",
     enum: ["Eco", "Live", "High"],
+    color: palette.heat,
   },
   autoTrim: {
     short: "Auto",
     kind: "toggle",
     info: "Automatically compensates output level against the input envelope for easier level matching.",
     enum: ["Off", "On"],
+    color: palette.output,
   },
   patina: {
     short: "Patina",
     kind: "dial",
     info: "Adds a very subtle deterministic low-level texture. Keep low for clean material.",
+    color: palette.patina,
   },
 };
+const layout = {
+  input: { label: [112, 38, 45, 12], control: [118, 57, 36, 48] },
+  hearth: { label: [156, 33, 55, 12], control: [164, 51, 44, 55] },
+  body: { label: [210, 38, 48, 12], control: [217, 57, 36, 48] },
+  bias: { label: [253, 38, 40, 12], control: [257, 57, 36, 48] },
+  bloom: { label: [311, 42, 48, 12], control: [318, 61, 36, 48] },
+  flux: { label: [361, 42, 45, 12], control: [366, 61, 36, 48] },
+  quality: { label: [408, 42, 58, 12], control: [410, 72, 58, 19] },
+  patina: { label: [409, 106, 58, 12], control: [417, 120, 36, 48] },
+  adapt: { label: [478, 38, 48, 12], control: [485, 56, 36, 48] },
+  dynamics: { label: [526, 38, 48, 12], control: [532, 56, 36, 48] },
+  recovery: { label: [574, 38, 56, 12], control: [583, 56, 36, 48] },
+  velvet: { label: [478, 104, 48, 12], control: [485, 119, 36, 48] },
+  detail: { label: [526, 104, 48, 12], control: [532, 119, 36, 48] },
+  stereoProtect: { label: [574, 104, 56, 12], control: [583, 119, 36, 48] },
+  mix: { label: [647, 40, 42, 12], control: [651, 58, 36, 48] },
+  output: { label: [698, 40, 48, 12], control: [704, 58, 36, 48] },
+  autoTrim: { label: [669, 115, 48, 12], control: [681, 132, 24, 24] },
+};
 const presentationFor = (param) => {
-  const i = uiOrder.indexOf(param);
-  const row = i >= 9 ? 1 : 0;
-  const col = row ? i - 9 : i;
-  const startX = row ? 164 : 134;
-  const step = row ? 74 : 68;
-  const x = startX + col * step;
-  const meta = controlMeta[param];
-  const y = row ? 116 : 43;
-  const control =
-    meta.kind === "menu"
-      ? [x - 14, y + 10, 68, 20]
-      : meta.kind === "toggle"
-        ? [x + 9, y + 5, 25, 25]
-        : [x, y, 42, 52];
-  return {
-    control,
-    label: [x - 14, row ? 99 : 26, 70, 13],
-  };
+  return layout[param];
 };
 
 add({
@@ -298,49 +341,61 @@ add({
   presentation_rect: [0, 0, 770, 170],
   background: 1,
   ignoreclick: 1,
-  bgcolor: [0.105, 0.095, 0.082, 1],
+  bgcolor: palette.bg,
   bordercolor: [0.18, 0.15, 0.12, 1],
 });
-add({
-  id: id(),
-  maxclass: "comment",
-  text: "HEARTH",
-  patching_rect: [35, 505, 100, 24],
-  presentation: 1,
-  presentation_rect: [18, 23, 98, 24],
-  fontsize: 18,
-  textcolor: [1, 0.72, 0.43, 1],
-});
-add({
-  id: id(),
-  maxclass: "comment",
-  text: "warm adaptive saturation",
-  patching_rect: [35, 531, 165, 18],
-  presentation: 1,
-  presentation_rect: [18, 49, 118, 34],
-  fontsize: 10,
-  textcolor: [0.78, 0.69, 0.58, 1],
-});
-add({
-  id: id(),
-  maxclass: "comment",
-  text: "TONE",
-  patching_rect: [35, 555, 80, 14],
-  presentation: 1,
-  presentation_rect: [18, 94, 70, 14],
-  fontsize: 9,
-  textcolor: [0.52, 0.77, 0.70, 1],
-});
-add({
-  id: id(),
-  maxclass: "comment",
-  text: "MOTION",
-  patching_rect: [35, 573, 80, 14],
-  presentation: 1,
-  presentation_rect: [18, 114, 70, 14],
-  fontsize: 9,
-  textcolor: [0.72, 0.62, 0.88, 1],
-});
+const addPresentationPanel = ({ rect, color, border }) =>
+  add({
+    id: id(),
+    maxclass: "panel",
+    patching_rect: [20 + rect[0], 500 + rect[1], rect[2], rect[3]],
+    presentation: 1,
+    presentation_rect: rect,
+    background: 1,
+    ignoreclick: 1,
+    rounded: 6,
+    bgcolor: color,
+    bordercolor: border,
+  });
+const addPresentationLabel = ({ text, rect, color = palette.text, size = 9, face = 0, just = 1 }) =>
+  add({
+    id: id(),
+    maxclass: "comment",
+    text,
+    patching_rect: [20 + rect[0], 690 + rect[1], rect[2], rect[3]],
+    presentation: 1,
+    presentation_rect: rect,
+    fontsize: size,
+    fontface: face,
+    textjustification: just,
+    textcolor: color,
+  });
+
+addPresentationPanel({ rect: [8, 12, 92, 152], color: [0.09, 0.078, 0.066, 1], border: withAlpha(palette.heat, 0.36) });
+addPresentationPanel({ rect: [106, 14, 190, 152], color: withAlpha(blend(palette.heat, palette.bg, 0.78), 0.94), border: withAlpha(palette.heat, 0.42) });
+addPresentationPanel({ rect: [305, 14, 166, 152], color: withAlpha(blend(palette.flux, palette.bg, 0.84), 0.94), border: withAlpha(palette.flux, 0.46) });
+addPresentationPanel({ rect: [480, 14, 150, 152], color: withAlpha(blend(palette.servo, palette.bg, 0.86), 0.94), border: withAlpha(palette.servo, 0.42) });
+addPresentationPanel({ rect: [639, 14, 118, 152], color: withAlpha(blend(palette.output, palette.bg, 0.84), 0.94), border: withAlpha(palette.output, 0.38) });
+
+addPresentationLabel({ text: "HEARTH", rect: [18, 25, 80, 22], color: palette.heat, size: 18, face: 1, just: 0 });
+addPresentationLabel({ text: "warmth-first", rect: [18, 54, 74, 14], color: palette.text, size: 9, just: 0 });
+addPresentationLabel({ text: "adaptive", rect: [18, 68, 68, 14], color: palette.servo, size: 9, just: 0 });
+addPresentationLabel({ text: "saturator", rect: [18, 82, 68, 14], color: palette.bloom, size: 9, just: 0 });
+addPresentationLabel({ text: "audio flow", rect: [18, 126, 70, 12], color: palette.muted, size: 8, just: 0 });
+addPresentationLabel({ text: "IN -> HEAT -> LANES -> SERVO -> OUT", rect: [18, 139, 82, 24], color: palette.muted, size: 7, just: 0 });
+
+addPresentationLabel({ text: "1  SHAPE", rect: [116, 20, 70, 12], color: palette.heat, size: 9, face: 1, just: 0 });
+addPresentationLabel({ text: "input / emphasis / tube bias", rect: [188, 20, 102, 12], color: palette.muted, size: 8, just: 2 });
+addPresentationLabel({ text: "2  LANES", rect: [314, 20, 70, 12], color: palette.flux, size: 9, face: 1, just: 0 });
+addPresentationLabel({ text: "bloom + flux + quality", rect: [386, 20, 80, 12], color: palette.muted, size: 8, just: 2 });
+addPresentationLabel({ text: "3  SERVO / TONE", rect: [489, 20, 95, 12], color: palette.servo, size: 9, face: 1, just: 0 });
+addPresentationLabel({ text: "guard, soften, stabilize", rect: [538, 20, 85, 12], color: palette.muted, size: 8, just: 2 });
+addPresentationLabel({ text: "4  BLEND", rect: [649, 20, 70, 12], color: palette.output, size: 9, face: 1, just: 0 });
+addPresentationLabel({ text: "level / mix", rect: [708, 20, 42, 12], color: palette.muted, size: 8, just: 2 });
+
+addPresentationLabel({ text: ">", rect: [297, 78, 12, 18], color: withAlpha(palette.heat, 0.7), size: 15, face: 1 });
+addPresentationLabel({ text: ">", rect: [472, 78, 12, 18], color: withAlpha(palette.flux, 0.7), size: 15, face: 1 });
+addPresentationLabel({ text: ">", rect: [631, 78, 12, 18], color: withAlpha(palette.servo, 0.7), size: 15, face: 1 });
 
 const plugin = add({
   id: id(),
@@ -443,7 +498,7 @@ controls.forEach(([param, label, min, max, initial, scale], i) => {
     presentation_rect: ui.label,
     fontsize: 9,
     textjustification: 1,
-    textcolor: [0.84, 0.78, 0.68, 1],
+    textcolor: meta.color,
   });
 
   const valueAttrs = {
@@ -464,7 +519,7 @@ controls.forEach(([param, label, min, max, initial, scale], i) => {
     maxclass: meta.kind === "menu" ? "live.menu" : meta.kind === "toggle" ? "live.toggle" : "live.dial",
     numinlets: 1,
     numoutlets: meta.kind === "menu" ? 3 : 2,
-    outlettype: meta.kind === "menu" ? ["", "", "float"] : ["", "float"],
+    outlettype: meta.kind === "menu" ? ["int", "anything", "float"] : ["", "float"],
     patching_rect: [x, y, 50, 48],
     presentation: 1,
     presentation_rect: ui.control,
@@ -474,6 +529,10 @@ controls.forEach(([param, label, min, max, initial, scale], i) => {
     annotation: meta.info,
     hint: meta.info,
     fontsize: 9,
+    textcolor: palette.text,
+    color: meta.color,
+    bordercolor: withAlpha(meta.color, 0.55),
+    focusbordercolor: meta.color,
     saved_attribute_attributes: {
       valueof: valueAttrs,
     },
@@ -483,9 +542,28 @@ controls.forEach(([param, label, min, max, initial, scale], i) => {
     controlBox.shownumber = 1;
     controlBox.valuepopup = 1;
     controlBox.valuepopuplabel = 3;
+    controlBox.dialcolor = [0.035, 0.033, 0.031, 1];
+    controlBox.fgdialcolor = withAlpha(meta.color, 0.45);
+    controlBox.activedialcolor = [0.05, 0.046, 0.042, 1];
+    controlBox.activefgdialcolor = meta.color;
+    controlBox.needlecolor = withAlpha(palette.text, 0.72);
+    controlBox.activeneedlecolor = palette.text;
+    controlBox.panelcolor = [0.018, 0.017, 0.016, 0.86];
+    controlBox.tricolor = meta.color;
   }
   if (meta.kind === "menu") {
     controlBox.items = meta.enum;
+    controlBox.activebgcolor = [0.055, 0.052, 0.048, 1];
+    controlBox.hltcolor = meta.color;
+    controlBox.hlttextcolor = palette.bg;
+    controlBox.tricolor = meta.color;
+    controlBox.bgcolor = [0.045, 0.042, 0.039, 1];
+  }
+  if (meta.kind === "toggle") {
+    controlBox.activebgcolor = [0.045, 0.042, 0.039, 1];
+    controlBox.activebgoncolor = meta.color;
+    controlBox.bgcolor = [0.045, 0.042, 0.039, 1];
+    controlBox.bgoncolor = meta.color;
   }
 
   const dial = add(controlBox);
