@@ -12,8 +12,8 @@
     "rect": [
       80,
       80,
-      824,
-      190
+      860,
+      210
     ],
     "bgcolor": [
       0.08,
@@ -22,7 +22,7 @@
       1
     ],
     "openinpresentation": 1,
-    "devicewidth": 824,
+    "devicewidth": 860,
     "annotation": "Hearth is a warmth-first adaptive saturation effect: input conditioning feeds shape controls, parallel Bloom and Flux lanes, a source-aware servo/tone stage, then final blend and level.",
     "gridonopen": 1,
     "gridsize": [
@@ -44,8 +44,8 @@
           "presentation_rect": [
             0,
             0,
-            824,
-            170
+            860,
+            190
           ],
           "background": 1,
           "ignoreclick": 1,
