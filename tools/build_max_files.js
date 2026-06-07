@@ -499,6 +499,25 @@ const thispatcher = add({
   patching_rect: [180, 72, 84, 22],
 });
 connect(presentationLoad, 0, thispatcher, 0);
+const widthLoad = add({
+  id: id(),
+  maxclass: "newobj",
+  text: `loadmess setwidth ${deviceWidth}`,
+  numinlets: 1,
+  numoutlets: 1,
+  outlettype: [""],
+  patching_rect: [32, 100, 150, 22],
+});
+const liveThisDevice = add({
+  id: id(),
+  maxclass: "newobj",
+  text: "live.thisdevice",
+  numinlets: 1,
+  numoutlets: 3,
+  outlettype: ["bang", "int", ""],
+  patching_rect: [190, 100, 96, 22],
+});
+connect(widthLoad, 0, liveThisDevice, 0);
 
 const controls = [
   ["hearth", "Hearth", 0, 100, 35, "0. 1."],
