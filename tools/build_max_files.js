@@ -311,23 +311,23 @@ const controlMeta = {
   },
 };
 const layout = {
-  input: { label: [118, 44, 50, 12], control: [126, 61, 36, 48] },
-  hearth: { label: [172, 44, 54, 12], control: [180, 61, 36, 48] },
-  body: { label: [226, 44, 52, 12], control: [234, 61, 36, 48] },
-  bias: { label: [281, 44, 42, 12], control: [288, 61, 36, 48] },
-  bloom: { label: [338, 44, 50, 12], control: [345, 61, 36, 48] },
-  flux: { label: [397, 44, 44, 12], control: [400, 61, 36, 48] },
-  patina: { label: [449, 44, 50, 12], control: [455, 61, 36, 48] },
-  adapt: { label: [517, 44, 48, 12], control: [524, 61, 36, 48] },
-  dynamics: { label: [567, 44, 42, 12], control: [574, 61, 36, 48] },
-  recovery: { label: [615, 44, 58, 12], control: [624, 61, 36, 48] },
-  velvet: { label: [517, 109, 48, 12], control: [524, 124, 36, 42] },
-  detail: { label: [567, 109, 48, 12], control: [574, 124, 36, 42] },
-  stereoProtect: { label: [615, 109, 58, 12], control: [624, 124, 36, 42] },
-  mix: { label: [681, 44, 40, 12], control: [684, 61, 36, 48] },
-  output: { label: [720, 44, 48, 12], control: [728, 61, 36, 48] },
-  quality: { label: [676, 116, 58, 12], control: [672, 136, 58, 19] },
-  autoTrim: { label: [727, 116, 42, 12], control: [740, 133, 24, 24] },
+  quality: { label: [26, 105, 66, 12], control: [24, 122, 66, 19] },
+  input: { label: [124, 48, 50, 12], control: [132, 66, 36, 48] },
+  hearth: { label: [178, 48, 54, 12], control: [186, 66, 36, 48] },
+  body: { label: [232, 48, 52, 12], control: [240, 66, 36, 48] },
+  bias: { label: [286, 48, 42, 12], control: [294, 66, 36, 48] },
+  bloom: { label: [356, 48, 50, 12], control: [363, 66, 36, 48] },
+  flux: { label: [410, 48, 44, 12], control: [417, 66, 36, 48] },
+  patina: { label: [464, 48, 50, 12], control: [471, 66, 36, 48] },
+  adapt: { label: [535, 48, 48, 12], control: [542, 66, 36, 48] },
+  dynamics: { label: [589, 48, 42, 12], control: [596, 66, 36, 48] },
+  recovery: { label: [643, 48, 58, 12], control: [650, 66, 36, 48] },
+  velvet: { label: [535, 110, 48, 12], control: [542, 124, 36, 42] },
+  detail: { label: [589, 110, 48, 12], control: [596, 124, 36, 42] },
+  stereoProtect: { label: [643, 110, 58, 12], control: [650, 124, 36, 42] },
+  mix: { label: [721, 48, 40, 12], control: [724, 66, 36, 48] },
+  output: { label: [775, 48, 48, 12], control: [778, 66, 36, 48] },
+  autoTrim: { label: [747, 119, 46, 12], control: [758, 137, 24, 24] },
 };
 const presentationFor = (param) => {
   return layout[param];
@@ -338,7 +338,7 @@ add({
   maxclass: "panel",
   patching_rect: [20, 500, 740, 170],
   presentation: 1,
-  presentation_rect: [0, 0, 770, 170],
+  presentation_rect: [0, 0, 840, 170],
   background: 1,
   ignoreclick: 1,
   bgcolor: palette.bg,
@@ -372,27 +372,24 @@ const addPresentationLabel = ({ text, rect, color = palette.text, size = 9, face
   });
 
 addPresentationPanel({ rect: [8, 12, 100, 152], color: [0.09, 0.078, 0.066, 1], border: withAlpha(palette.heat, 0.42) });
-addPresentationPanel({ rect: [114, 14, 212, 152], color: withAlpha(blend(palette.heat, palette.bg, 0.82), 0.96), border: palette.heat });
-addPresentationPanel({ rect: [333, 14, 170, 152], color: withAlpha(blend(palette.flux, palette.bg, 0.86), 0.96), border: palette.flux });
-addPresentationPanel({ rect: [511, 14, 160, 152], color: withAlpha(blend(palette.servo, palette.bg, 0.88), 0.96), border: palette.servo });
-addPresentationPanel({ rect: [676, 14, 94, 152], color: withAlpha(blend(palette.output, palette.bg, 0.86), 0.96), border: palette.output });
+addPresentationPanel({ rect: [116, 14, 214, 152], color: withAlpha(blend(palette.heat, palette.bg, 0.84), 0.96), border: palette.text });
+addPresentationPanel({ rect: [348, 14, 170, 152], color: withAlpha(blend(palette.flux, palette.bg, 0.88), 0.96), border: palette.text });
+addPresentationPanel({ rect: [530, 14, 170, 152], color: withAlpha(blend(palette.servo, palette.bg, 0.88), 0.96), border: palette.text });
+addPresentationPanel({ rect: [712, 14, 112, 152], color: withAlpha(blend(palette.output, palette.bg, 0.86), 0.96), border: palette.text });
 
 addPresentationLabel({ text: "HEARTH", rect: [20, 24, 80, 22], color: palette.heat, size: 18, face: 1, just: 0 });
 addPresentationLabel({ text: "warmth-first", rect: [20, 53, 80, 14], color: palette.text, size: 9, just: 0 });
 addPresentationLabel({ text: "adaptive", rect: [20, 68, 80, 14], color: palette.servo, size: 9, just: 0 });
 addPresentationLabel({ text: "saturator", rect: [20, 83, 80, 14], color: palette.bloom, size: 9, just: 0 });
-addPresentationLabel({ text: "FLOW", rect: [20, 121, 80, 12], color: palette.muted, size: 8, face: 1, just: 0 });
-addPresentationLabel({ text: "SHAPE  LANES", rect: [20, 134, 85, 10], color: palette.muted, size: 7, just: 0 });
-addPresentationLabel({ text: "SERVO  BLEND", rect: [20, 145, 85, 10], color: palette.muted, size: 7, just: 0 });
 
-addPresentationLabel({ text: "1  SHAPE", rect: [122, 22, 74, 12], color: palette.heat, size: 9, face: 1, just: 0 });
-addPresentationLabel({ text: "input, emphasis, tube bias", rect: [198, 22, 110, 12], color: palette.muted, size: 8, just: 2 });
-addPresentationLabel({ text: "2  LANES", rect: [342, 22, 70, 12], color: palette.flux, size: 9, face: 1, just: 0 });
-addPresentationLabel({ text: "parallel density + memory", rect: [412, 22, 86, 12], color: palette.muted, size: 8, just: 2 });
-addPresentationLabel({ text: "3  SERVO / TONE", rect: [520, 22, 96, 12], color: palette.servo, size: 9, face: 1, just: 0 });
-addPresentationLabel({ text: "guard + polish", rect: [607, 22, 58, 12], color: palette.muted, size: 8, just: 2 });
-addPresentationLabel({ text: "4  BLEND", rect: [684, 22, 64, 12], color: palette.output, size: 9, face: 1, just: 0 });
-addPresentationLabel({ text: "final stage", rect: [732, 22, 34, 12], color: palette.muted, size: 8, just: 2 });
+addPresentationLabel({ text: "1  SHAPE", rect: [126, 22, 74, 12], color: palette.heat, size: 9, face: 1, just: 0 });
+addPresentationLabel({ text: "input, emphasis, tube bias", rect: [204, 22, 112, 12], color: palette.muted, size: 8, just: 2 });
+addPresentationLabel({ text: "2  LANES", rect: [358, 22, 70, 12], color: palette.flux, size: 9, face: 1, just: 0 });
+addPresentationLabel({ text: "density + memory", rect: [424, 22, 88, 12], color: palette.muted, size: 8, just: 2 });
+addPresentationLabel({ text: "3  SERVO / TONE", rect: [540, 22, 96, 12], color: palette.servo, size: 9, face: 1, just: 0 });
+addPresentationLabel({ text: "guard + polish", rect: [628, 22, 58, 12], color: palette.muted, size: 8, just: 2 });
+addPresentationLabel({ text: "4  BLEND", rect: [722, 22, 64, 12], color: palette.output, size: 9, face: 1, just: 0 });
+addPresentationLabel({ text: "final stage", rect: [772, 22, 44, 12], color: palette.muted, size: 8, just: 2 });
 
 const plugin = add({
   id: id(),
@@ -539,10 +536,10 @@ controls.forEach(([param, label, min, max, initial, scale], i) => {
     controlBox.shownumber = 1;
     controlBox.valuepopup = 1;
     controlBox.valuepopuplabel = 3;
-    controlBox.dialcolor = withAlpha(meta.color, 0.82);
-    controlBox.fgdialcolor = [0.035, 0.033, 0.031, 1];
+    controlBox.dialcolor = withAlpha(meta.color, 0.88);
+    controlBox.fgdialcolor = withAlpha(meta.color, 0.20);
     controlBox.activedialcolor = meta.color;
-    controlBox.activefgdialcolor = [0.05, 0.046, 0.042, 1];
+    controlBox.activefgdialcolor = withAlpha(meta.color, 0.24);
     controlBox.needlecolor = withAlpha(palette.text, 0.72);
     controlBox.activeneedlecolor = palette.text;
     controlBox.panelcolor = [0.018, 0.017, 0.016, 0.86];
@@ -622,10 +619,10 @@ const maxpat = {
     fileversion: 1,
     appversion,
     classnamespace: "box",
-    rect: [80, 80, 770, 190],
+    rect: [80, 80, 840, 190],
     bgcolor: [0.08, 0.075, 0.07, 1],
     openinpresentation: 1,
-    devicewidth: 770,
+    devicewidth: 840,
     gridonopen: 1,
     gridsize: [15, 15],
     boxes,
