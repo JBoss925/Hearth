@@ -180,6 +180,8 @@ const blend = (a, b, t) => [
   a[2] * (1 - t) + b[2] * t,
   a[3] * (1 - t) + b[3] * t,
 ];
+const deviceInfo =
+  "Hearth is a warmth-first adaptive saturation effect: input conditioning feeds shape controls, parallel Bloom and Flux lanes, a source-aware servo/tone stage, then final blend and level.";
 const uiLabels = {
   input: "Input dB",
   hearth: "Hearth",
@@ -338,13 +340,17 @@ add({
   maxclass: "panel",
   patching_rect: [20, 500, 740, 170],
   presentation: 1,
-  presentation_rect: [0, 0, 840, 170],
+  presentation_rect: [0, 0, 860, 170],
   background: 1,
   ignoreclick: 1,
+  varname: "hearth_device_info",
+  annotation_name: "Hearth",
+  annotation: deviceInfo,
+  hint: deviceInfo,
   bgcolor: palette.bg,
   bordercolor: [0.18, 0.15, 0.12, 1],
 });
-const addPresentationPanel = ({ rect, color, border }) =>
+const addPresentationPanel = ({ rect, color, border, name, info }) =>
   add({
     id: id(),
     maxclass: "panel",
@@ -353,6 +359,10 @@ const addPresentationPanel = ({ rect, color, border }) =>
     presentation_rect: rect,
     background: 1,
     ignoreclick: 1,
+    varname: name,
+    annotation_name: name,
+    annotation: info,
+    hint: info,
     rounded: 6,
     bgcolor: color,
     bordercolor: border,
@@ -371,11 +381,41 @@ const addPresentationLabel = ({ text, rect, color = palette.text, size = 9, face
     textcolor: color,
   });
 
-addPresentationPanel({ rect: [8, 12, 100, 152], color: [0.09, 0.078, 0.066, 1], border: withAlpha(palette.heat, 0.42) });
-addPresentationPanel({ rect: [116, 14, 214, 152], color: withAlpha(blend(palette.heat, palette.bg, 0.84), 0.96), border: palette.text });
-addPresentationPanel({ rect: [348, 14, 170, 152], color: withAlpha(blend(palette.flux, palette.bg, 0.88), 0.96), border: palette.text });
-addPresentationPanel({ rect: [530, 14, 170, 152], color: withAlpha(blend(palette.servo, palette.bg, 0.88), 0.96), border: palette.text });
-addPresentationPanel({ rect: [712, 14, 112, 152], color: withAlpha(blend(palette.output, palette.bg, 0.86), 0.96), border: palette.text });
+addPresentationPanel({
+  rect: [8, 12, 100, 152],
+  color: [0.09, 0.078, 0.066, 1],
+  border: withAlpha(palette.heat, 0.42),
+  name: "Hearth Overview",
+  info: deviceInfo,
+});
+addPresentationPanel({
+  rect: [116, 14, 214, 152],
+  color: withAlpha(blend(palette.heat, palette.bg, 0.84), 0.96),
+  border: palette.text,
+  name: "Shape",
+  info: "Shape controls set the gain, low-mid emphasis, main heat amount, and asymmetric tube-bias color before the parallel lanes.",
+});
+addPresentationPanel({
+  rect: [348, 14, 170, 152],
+  color: withAlpha(blend(palette.flux, palette.bg, 0.88), 0.96),
+  border: palette.text,
+  name: "Lanes",
+  info: "The Bloom, Flux, and Patina lanes add transient density, path-dependent memory, and subtle texture in parallel.",
+});
+addPresentationPanel({
+  rect: [530, 14, 170, 152],
+  color: withAlpha(blend(palette.servo, palette.bg, 0.88), 0.96),
+  border: palette.text,
+  name: "Servo / Tone",
+  info: "The servo and tone stage adapts to source brightness and roughness, then smooths, restores detail, and protects stereo width.",
+});
+addPresentationPanel({
+  rect: [712, 14, 112, 152],
+  color: withAlpha(blend(palette.output, palette.bg, 0.86), 0.96),
+  border: palette.text,
+  name: "Blend",
+  info: "Blend controls set wet/dry balance, output level, and automatic level compensation after processing.",
+});
 
 addPresentationLabel({ text: "HEARTH", rect: [20, 24, 80, 22], color: palette.heat, size: 18, face: 1, just: 0 });
 addPresentationLabel({ text: "warmth-first", rect: [20, 53, 80, 14], color: palette.text, size: 9, just: 0 });
@@ -519,6 +559,15 @@ controls.forEach(([param, label, min, max, initial, scale], i) => {
     presentation_rect: ui.control,
     varname: `hearth_${param}`,
     parameter_enable: 1,
+    parameter_annotation_name: label,
+    parameter_info: meta.info,
+    parameter_longname: label,
+    parameter_shortname: meta.short,
+    parameter_type: meta.kind === "menu" || meta.kind === "toggle" ? 2 : 0,
+    parameter_mmin: min,
+    parameter_mmax: max,
+    parameter_initial_enable: 1,
+    parameter_initial: [initial],
     annotation_name: label,
     annotation: meta.info,
     hint: meta.info,
@@ -531,6 +580,8 @@ controls.forEach(([param, label, min, max, initial, scale], i) => {
       valueof: valueAttrs,
     },
   };
+  if (meta.enum) controlBox.parameter_enum = meta.enum;
+  if (meta.unitstyle) controlBox.parameter_unitstyle = meta.unitstyle;
   if (meta.kind === "dial") {
     controlBox.showname = 0;
     controlBox.shownumber = 1;
@@ -619,10 +670,11 @@ const maxpat = {
     fileversion: 1,
     appversion,
     classnamespace: "box",
-    rect: [80, 80, 840, 190],
+    rect: [80, 80, 860, 190],
     bgcolor: [0.08, 0.075, 0.07, 1],
     openinpresentation: 1,
-    devicewidth: 840,
+    devicewidth: 860,
+    annotation: deviceInfo,
     gridonopen: 1,
     gridsize: [15, 15],
     boxes,

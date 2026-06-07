@@ -12,7 +12,7 @@
     "rect": [
       80,
       80,
-      840,
+      860,
       190
     ],
     "bgcolor": [
@@ -22,7 +22,8 @@
       1
     ],
     "openinpresentation": 1,
-    "devicewidth": 840,
+    "devicewidth": 860,
+    "annotation": "Hearth is a warmth-first adaptive saturation effect: input conditioning feeds shape controls, parallel Bloom and Flux lanes, a source-aware servo/tone stage, then final blend and level.",
     "gridonopen": 1,
     "gridsize": [
       15,
@@ -43,11 +44,15 @@
           "presentation_rect": [
             0,
             0,
-            840,
+            860,
             170
           ],
           "background": 1,
           "ignoreclick": 1,
+          "varname": "hearth_device_info",
+          "annotation_name": "Hearth",
+          "annotation": "Hearth is a warmth-first adaptive saturation effect: input conditioning feeds shape controls, parallel Bloom and Flux lanes, a source-aware servo/tone stage, then final blend and level.",
+          "hint": "Hearth is a warmth-first adaptive saturation effect: input conditioning feeds shape controls, parallel Bloom and Flux lanes, a source-aware servo/tone stage, then final blend and level.",
           "bgcolor": [
             0.075,
             0.067,
@@ -81,6 +86,10 @@
           ],
           "background": 1,
           "ignoreclick": 1,
+          "varname": "Hearth Overview",
+          "annotation_name": "Hearth Overview",
+          "annotation": "Hearth is a warmth-first adaptive saturation effect: input conditioning feeds shape controls, parallel Bloom and Flux lanes, a source-aware servo/tone stage, then final blend and level.",
+          "hint": "Hearth is a warmth-first adaptive saturation effect: input conditioning feeds shape controls, parallel Bloom and Flux lanes, a source-aware servo/tone stage, then final blend and level.",
           "rounded": 6,
           "bgcolor": [
             0.09,
@@ -115,6 +124,10 @@
           ],
           "background": 1,
           "ignoreclick": 1,
+          "varname": "Shape",
+          "annotation_name": "Shape",
+          "annotation": "Shape controls set the gain, low-mid emphasis, main heat amount, and asymmetric tube-bias color before the parallel lanes.",
+          "hint": "Shape controls set the gain, low-mid emphasis, main heat amount, and asymmetric tube-bias color before the parallel lanes.",
           "rounded": 6,
           "bgcolor": [
             0.22300000000000003,
@@ -149,6 +162,10 @@
           ],
           "background": 1,
           "ignoreclick": 1,
+          "varname": "Lanes",
+          "annotation_name": "Lanes",
+          "annotation": "The Bloom, Flux, and Patina lanes add transient density, path-dependent memory, and subtle texture in parallel.",
+          "hint": "The Bloom, Flux, and Patina lanes add transient density, path-dependent memory, and subtle texture in parallel.",
           "rounded": 6,
           "bgcolor": [
             0.1356,
@@ -183,6 +200,10 @@
           ],
           "background": 1,
           "ignoreclick": 1,
+          "varname": "Servo / Tone",
+          "annotation_name": "Servo / Tone",
+          "annotation": "The servo and tone stage adapts to source brightness and roughness, then smooths, restores detail, and protects stereo width.",
+          "hint": "The servo and tone stage adapts to source brightness and roughness, then smooths, restores detail, and protects stereo width.",
           "rounded": 6,
           "bgcolor": [
             0.1116,
@@ -217,6 +238,10 @@
           ],
           "background": 1,
           "ignoreclick": 1,
+          "varname": "Blend",
+          "annotation_name": "Blend",
+          "annotation": "Blend controls set wet/dry balance, output level, and automatic level compensation after processing.",
+          "hint": "Blend controls set wet/dry balance, output level, and automatic level compensation after processing.",
           "rounded": 6,
           "bgcolor": [
             0.19330000000000003,
@@ -749,6 +774,17 @@
           ],
           "varname": "hearth_hearth",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Hearth",
+          "parameter_info": "Main warmth and drive amount. Higher settings create denser saturation and stronger harmonic color.",
+          "parameter_longname": "Hearth",
+          "parameter_shortname": "Hearth",
+          "parameter_type": 0,
+          "parameter_mmin": 0,
+          "parameter_mmax": 100,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            35
+          ],
           "annotation_name": "Hearth",
           "annotation": "Main warmth and drive amount. Higher settings create denser saturation and stronger harmonic color.",
           "hint": "Main warmth and drive amount. Higher settings create denser saturation and stronger harmonic color.",
@@ -972,6 +1008,17 @@
           ],
           "varname": "hearth_body",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Body dB",
+          "parameter_info": "Low-mid body emphasis before the nonlinear stage. Positive values add weight; negative values thin the drive path.",
+          "parameter_longname": "Body dB",
+          "parameter_shortname": "Body",
+          "parameter_type": 0,
+          "parameter_mmin": -6,
+          "parameter_mmax": 6,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            1.5
+          ],
           "annotation_name": "Body dB",
           "annotation": "Low-mid body emphasis before the nonlinear stage. Positive values add weight; negative values thin the drive path.",
           "hint": "Low-mid body emphasis before the nonlinear stage. Positive values add weight; negative values thin the drive path.",
@@ -1015,6 +1062,7 @@
               "parameter_unitstyle": 4
             }
           },
+          "parameter_unitstyle": 4,
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
@@ -1178,6 +1226,17 @@
           ],
           "varname": "hearth_velvet",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Velvet",
+          "parameter_info": "Softens upper harmonics after saturation. Higher values make the tone smoother and less edgy.",
+          "parameter_longname": "Velvet",
+          "parameter_shortname": "Velvet",
+          "parameter_type": 0,
+          "parameter_mmin": 0,
+          "parameter_mmax": 100,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            28
+          ],
           "annotation_name": "Velvet",
           "annotation": "Softens upper harmonics after saturation. Higher values make the tone smoother and less edgy.",
           "hint": "Softens upper harmonics after saturation. Higher values make the tone smoother and less edgy.",
@@ -1401,6 +1460,17 @@
           ],
           "varname": "hearth_bloom",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Bloom",
+          "parameter_info": "Transient-local parallel density. Higher values make attacks feel fuller and more saturated.",
+          "parameter_longname": "Bloom",
+          "parameter_shortname": "Bloom",
+          "parameter_type": 0,
+          "parameter_mmin": 0,
+          "parameter_mmax": 100,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            24
+          ],
           "annotation_name": "Bloom",
           "annotation": "Transient-local parallel density. Higher values make attacks feel fuller and more saturated.",
           "hint": "Transient-local parallel density. Higher values make attacks feel fuller and more saturated.",
@@ -1624,6 +1694,17 @@
           ],
           "varname": "hearth_flux",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Flux",
+          "parameter_info": "Adds a path-dependent flux lane for tape-like movement and memory in the saturation.",
+          "parameter_longname": "Flux",
+          "parameter_shortname": "Flux",
+          "parameter_type": 0,
+          "parameter_mmin": 0,
+          "parameter_mmax": 100,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            18
+          ],
           "annotation_name": "Flux",
           "annotation": "Adds a path-dependent flux lane for tape-like movement and memory in the saturation.",
           "hint": "Adds a path-dependent flux lane for tape-like movement and memory in the saturation.",
@@ -1847,6 +1928,17 @@
           ],
           "varname": "hearth_bias",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Bias",
+          "parameter_info": "Asymmetry bias for the saturation curve. Use subtle amounts for richer even-harmonic color.",
+          "parameter_longname": "Bias",
+          "parameter_shortname": "Bias",
+          "parameter_type": 0,
+          "parameter_mmin": -25,
+          "parameter_mmax": 25,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            4
+          ],
           "annotation_name": "Bias",
           "annotation": "Asymmetry bias for the saturation curve. Use subtle amounts for richer even-harmonic color.",
           "hint": "Asymmetry bias for the saturation curve. Use subtle amounts for richer even-harmonic color.",
@@ -2070,6 +2162,17 @@
           ],
           "varname": "hearth_adapt",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Adapt",
+          "parameter_info": "Adaptive protection amount. Higher values back off harshness when the source gets bright or rough.",
+          "parameter_longname": "Adapt",
+          "parameter_shortname": "Adapt",
+          "parameter_type": 0,
+          "parameter_mmin": 0,
+          "parameter_mmax": 100,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            62
+          ],
           "annotation_name": "Adapt",
           "annotation": "Adaptive protection amount. Higher values back off harshness when the source gets bright or rough.",
           "hint": "Adaptive protection amount. Higher values back off harshness when the source gets bright or rough.",
@@ -2293,6 +2396,17 @@
           ],
           "varname": "hearth_detail",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Detail",
+          "parameter_info": "Restores a little presence after smoothing. Raise it when the result needs more articulation.",
+          "parameter_longname": "Detail",
+          "parameter_shortname": "Detail",
+          "parameter_type": 0,
+          "parameter_mmin": 0,
+          "parameter_mmax": 100,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            58
+          ],
           "annotation_name": "Detail",
           "annotation": "Restores a little presence after smoothing. Raise it when the result needs more articulation.",
           "hint": "Restores a little presence after smoothing. Raise it when the result needs more articulation.",
@@ -2516,6 +2630,17 @@
           ],
           "varname": "hearth_dynamics",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Dynamics",
+          "parameter_info": "Makes drive respond to level and envelope. Higher values push loud passages more dynamically.",
+          "parameter_longname": "Dynamics",
+          "parameter_shortname": "Dyn",
+          "parameter_type": 0,
+          "parameter_mmin": 0,
+          "parameter_mmax": 100,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            42
+          ],
           "annotation_name": "Dynamics",
           "annotation": "Makes drive respond to level and envelope. Higher values push loud passages more dynamically.",
           "hint": "Makes drive respond to level and envelope. Higher values push loud passages more dynamically.",
@@ -2739,6 +2864,17 @@
           ],
           "varname": "hearth_recovery",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Recovery ms",
+          "parameter_info": "Envelope recovery time in milliseconds for adaptive drive and flux movement.",
+          "parameter_longname": "Recovery ms",
+          "parameter_shortname": "Recov",
+          "parameter_type": 0,
+          "parameter_mmin": 20,
+          "parameter_mmax": 600,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            140
+          ],
           "annotation_name": "Recovery ms",
           "annotation": "Envelope recovery time in milliseconds for adaptive drive and flux movement.",
           "hint": "Envelope recovery time in milliseconds for adaptive drive and flux movement.",
@@ -2782,6 +2918,7 @@
               "parameter_unitstyle": 2
             }
           },
+          "parameter_unitstyle": 2,
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
@@ -2945,6 +3082,17 @@
           ],
           "varname": "hearth_stereoProtect",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Stereo",
+          "parameter_info": "Keeps the side channel from overdriving relative to the center, preserving stereo stability.",
+          "parameter_longname": "Stereo",
+          "parameter_shortname": "Stereo",
+          "parameter_type": 0,
+          "parameter_mmin": 0,
+          "parameter_mmax": 100,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            70
+          ],
           "annotation_name": "Stereo",
           "annotation": "Keeps the side channel from overdriving relative to the center, preserving stereo stability.",
           "hint": "Keeps the side channel from overdriving relative to the center, preserving stereo stability.",
@@ -3168,6 +3316,17 @@
           ],
           "varname": "hearth_mix",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Mix",
+          "parameter_info": "Wet/dry blend between the input and Hearth's processed signal.",
+          "parameter_longname": "Mix",
+          "parameter_shortname": "Mix",
+          "parameter_type": 0,
+          "parameter_mmin": 0,
+          "parameter_mmax": 100,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            100
+          ],
           "annotation_name": "Mix",
           "annotation": "Wet/dry blend between the input and Hearth's processed signal.",
           "hint": "Wet/dry blend between the input and Hearth's processed signal.",
@@ -3211,6 +3370,7 @@
               "parameter_unitstyle": 5
             }
           },
+          "parameter_unitstyle": 5,
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
@@ -3392,6 +3552,17 @@
           ],
           "varname": "hearth_output",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Output dB",
+          "parameter_info": "Output trim after processing. Use this to level-match the processed signal.",
+          "parameter_longname": "Output dB",
+          "parameter_shortname": "Out",
+          "parameter_type": 0,
+          "parameter_mmin": -24,
+          "parameter_mmax": 24,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            0
+          ],
           "annotation_name": "Output dB",
           "annotation": "Output trim after processing. Use this to level-match the processed signal.",
           "hint": "Output trim after processing. Use this to level-match the processed signal.",
@@ -3435,6 +3606,7 @@
               "parameter_unitstyle": 4
             }
           },
+          "parameter_unitstyle": 4,
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
@@ -3599,6 +3771,17 @@
           ],
           "varname": "hearth_quality",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Quality",
+          "parameter_info": "Anti-aliasing quality for the tube lane: Eco, Live, or High. Higher quality costs more CPU.",
+          "parameter_longname": "Quality",
+          "parameter_shortname": "Qual",
+          "parameter_type": 2,
+          "parameter_mmin": 0,
+          "parameter_mmax": 2,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            1
+          ],
           "annotation_name": "Quality",
           "annotation": "Anti-aliasing quality for the tube lane: Eco, Live, or High. Higher quality costs more CPU.",
           "hint": "Anti-aliasing quality for the tube lane: Eco, Live, or High. Higher quality costs more CPU.",
@@ -3646,6 +3829,11 @@
               ]
             }
           },
+          "parameter_enum": [
+            "Eco",
+            "Live",
+            "High"
+          ],
           "items": [
             "Eco",
             "Live",
@@ -3792,6 +3980,17 @@
           ],
           "varname": "hearth_autoTrim",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Auto Trim",
+          "parameter_info": "Automatically compensates output level against the input envelope for easier level matching.",
+          "parameter_longname": "Auto Trim",
+          "parameter_shortname": "Auto",
+          "parameter_type": 2,
+          "parameter_mmin": 0,
+          "parameter_mmax": 1,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            1
+          ],
           "annotation_name": "Auto Trim",
           "annotation": "Automatically compensates output level against the input envelope for easier level matching.",
           "hint": "Automatically compensates output level against the input envelope for easier level matching.",
@@ -3838,6 +4037,10 @@
               ]
             }
           },
+          "parameter_enum": [
+            "Off",
+            "On"
+          ],
           "activebgcolor": [
             0.045,
             0.042,
@@ -3973,6 +4176,17 @@
           ],
           "varname": "hearth_patina",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Patina",
+          "parameter_info": "Adds a very subtle deterministic low-level texture. Keep low for clean material.",
+          "parameter_longname": "Patina",
+          "parameter_shortname": "Patina",
+          "parameter_type": 0,
+          "parameter_mmin": 0,
+          "parameter_mmax": 10,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            0
+          ],
           "annotation_name": "Patina",
           "annotation": "Adds a very subtle deterministic low-level texture. Keep low for clean material.",
           "hint": "Adds a very subtle deterministic low-level texture. Keep low for clean material.",
@@ -4196,6 +4410,17 @@
           ],
           "varname": "hearth_input",
           "parameter_enable": 1,
+          "parameter_annotation_name": "Input dB",
+          "parameter_info": "Input trim before the saturation core. Use this to hit Hearth harder or back off hot material.",
+          "parameter_longname": "Input dB",
+          "parameter_shortname": "In",
+          "parameter_type": 0,
+          "parameter_mmin": -24,
+          "parameter_mmax": 24,
+          "parameter_initial_enable": 1,
+          "parameter_initial": [
+            0
+          ],
           "annotation_name": "Input dB",
           "annotation": "Input trim before the saturation core. Use this to hit Hearth harder or back off hot material.",
           "hint": "Input trim before the saturation core. Use this to hit Hearth harder or back off hot material.",
@@ -4239,6 +4464,7 @@
               "parameter_unitstyle": 4
             }
           },
+          "parameter_unitstyle": 4,
           "showname": 0,
           "shownumber": 1,
           "valuepopup": 1,
