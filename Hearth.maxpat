@@ -16,11 +16,31 @@
       210
     ],
     "bgcolor": [
-      0.08,
       0.075,
-      0.07,
+      0.067,
+      0.058,
       1
     ],
+    "editing_bgcolor": [
+      0.075,
+      0.067,
+      0.058,
+      1
+    ],
+    "locked_bgcolor": [
+      0.075,
+      0.067,
+      0.058,
+      1
+    ],
+    "presentation_bgcolor": [
+      0.075,
+      0.067,
+      0.058,
+      1
+    ],
+    "enablehscroll": 0,
+    "enablevscroll": 0,
     "openinpresentation": 1,
     "devicewidth": 860,
     "annotation": "Hearth is a warmth-first adaptive saturation effect: input conditioning feeds shape controls, parallel Bloom and Flux lanes, a source-aware servo/tone stage, then final blend and level.",
@@ -42,10 +62,10 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            0,
-            0,
-            860,
-            190
+            -24,
+            -24,
+            908,
+            238
           ],
           "background": 1,
           "ignoreclick": 1,
