@@ -182,6 +182,10 @@ const blend = (a, b, t) => [
 ];
 const deviceInfo =
   "Hearth is a warmth-first adaptive saturation effect: input conditioning feeds shape controls, parallel Bloom and Flux lanes, a source-aware servo/tone stage, then final blend and level.";
+const deviceWidth = 900;
+const deviceHeight = 190;
+const visibleXOffset = 12;
+const uiRect = (rect) => [rect[0] + visibleXOffset, rect[1], rect[2], rect[3]];
 const uiLabels = {
   input: "Input dB",
   hearth: "Hearth",
@@ -329,10 +333,11 @@ const layout = {
   stereoProtect: { label: [643, 110, 58, 12], control: [650, 124, 36, 42] },
   mix: { label: [721, 48, 40, 12], control: [724, 66, 36, 48] },
   output: { label: [775, 48, 48, 12], control: [778, 66, 36, 48] },
-  autoTrim: { label: [747, 119, 46, 12], control: [758, 137, 24, 24] },
+  autoTrim: { label: [808, 119, 46, 12], control: [820, 137, 24, 24] },
 };
 const presentationFor = (param) => {
-  return layout[param];
+  const ui = layout[param];
+  return { label: uiRect(ui.label), control: uiRect(ui.control) };
 };
 
 add({
@@ -340,7 +345,7 @@ add({
   maxclass: "panel",
   patching_rect: [20, 500, 740, 170],
   presentation: 1,
-  presentation_rect: [-24, -24, 908, 238],
+  presentation_rect: [-24, -24, deviceWidth + 48, deviceHeight + 48],
   background: 1,
   ignoreclick: 1,
   varname: "hearth_device_info",
@@ -356,7 +361,7 @@ const addPresentationPanel = ({ rect, color, border, name, info }) =>
     maxclass: "panel",
     patching_rect: [20 + rect[0], 500 + rect[1], rect[2], rect[3]],
     presentation: 1,
-    presentation_rect: rect,
+    presentation_rect: uiRect(rect),
     background: 1,
     ignoreclick: 1,
     varname: name,
@@ -374,7 +379,7 @@ const addPresentationLabel = ({ text, rect, color = palette.text, size = 9, face
     text,
     patching_rect: [20 + rect[0], 690 + rect[1], rect[2], rect[3]],
     presentation: 1,
-    presentation_rect: rect,
+    presentation_rect: uiRect(rect),
     fontsize: size,
     fontface: face,
     textjustification: just,
@@ -410,7 +415,7 @@ addPresentationPanel({
   info: "The servo and tone stage adapts to source brightness and roughness, then smooths, restores detail, and protects stereo width.",
 });
 addPresentationPanel({
-  rect: [712, 14, 112, 152],
+  rect: [712, 14, 168, 152],
   color: withAlpha(blend(palette.output, palette.bg, 0.86), 0.96),
   border: palette.text,
   name: "Blend",
@@ -670,7 +675,7 @@ const maxpat = {
     fileversion: 1,
     appversion,
     classnamespace: "box",
-    rect: [80, 80, 860, 210],
+    rect: [80, 80, deviceWidth, deviceHeight + 20],
     bgcolor: palette.bg,
     editing_bgcolor: palette.bg,
     locked_bgcolor: palette.bg,
@@ -678,7 +683,7 @@ const maxpat = {
     enablehscroll: 0,
     enablevscroll: 0,
     openinpresentation: 1,
-    devicewidth: 860,
+    devicewidth: deviceWidth,
     annotation: deviceInfo,
     gridonopen: 1,
     gridsize: [15, 15],

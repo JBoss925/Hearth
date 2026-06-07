@@ -12,7 +12,7 @@
     "rect": [
       80,
       80,
-      860,
+      900,
       210
     ],
     "bgcolor": [
@@ -42,7 +42,7 @@
     "enablehscroll": 0,
     "enablevscroll": 0,
     "openinpresentation": 1,
-    "devicewidth": 860,
+    "devicewidth": 900,
     "annotation": "Hearth is a warmth-first adaptive saturation effect: input conditioning feeds shape controls, parallel Bloom and Flux lanes, a source-aware servo/tone stage, then final blend and level.",
     "gridonopen": 1,
     "gridsize": [
@@ -64,7 +64,7 @@
           "presentation_rect": [
             -24,
             -24,
-            908,
+            948,
             238
           ],
           "background": 1,
@@ -99,7 +99,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            8,
+            20,
             12,
             100,
             152
@@ -137,7 +137,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            116,
+            128,
             14,
             214,
             152
@@ -175,7 +175,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            348,
+            360,
             14,
             170,
             152
@@ -213,7 +213,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            530,
+            542,
             14,
             170,
             152
@@ -246,14 +246,14 @@
           "patching_rect": [
             732,
             514,
-            112,
+            168,
             152
           ],
           "presentation": 1,
           "presentation_rect": [
-            712,
+            724,
             14,
-            112,
+            168,
             152
           ],
           "background": 1,
@@ -290,7 +290,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            20,
+            32,
             24,
             80,
             22
@@ -319,7 +319,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            20,
+            32,
             53,
             80,
             14
@@ -348,7 +348,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            20,
+            32,
             68,
             80,
             14
@@ -377,7 +377,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            20,
+            32,
             83,
             80,
             14
@@ -406,7 +406,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            126,
+            138,
             22,
             74,
             12
@@ -435,7 +435,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            204,
+            216,
             22,
             112,
             12
@@ -464,7 +464,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            358,
+            370,
             22,
             70,
             12
@@ -493,7 +493,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            424,
+            436,
             22,
             88,
             12
@@ -522,7 +522,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            540,
+            552,
             22,
             96,
             12
@@ -551,7 +551,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            628,
+            640,
             22,
             58,
             12
@@ -580,7 +580,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            722,
+            734,
             22,
             64,
             12
@@ -609,7 +609,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            772,
+            784,
             22,
             44,
             12
@@ -754,7 +754,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            178,
+            190,
             48,
             54,
             12
@@ -787,7 +787,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            186,
+            198,
             66,
             36,
             48
@@ -988,7 +988,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            232,
+            244,
             48,
             52,
             12
@@ -1021,7 +1021,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            240,
+            252,
             66,
             36,
             48
@@ -1206,7 +1206,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            535,
+            547,
             110,
             48,
             12
@@ -1239,7 +1239,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            542,
+            554,
             124,
             36,
             42
@@ -1440,7 +1440,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            356,
+            368,
             48,
             50,
             12
@@ -1473,7 +1473,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            363,
+            375,
             66,
             36,
             48
@@ -1674,7 +1674,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            410,
+            422,
             48,
             44,
             12
@@ -1707,7 +1707,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            417,
+            429,
             66,
             36,
             48
@@ -1908,7 +1908,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            286,
+            298,
             48,
             42,
             12
@@ -1941,7 +1941,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            294,
+            306,
             66,
             36,
             48
@@ -2142,7 +2142,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            535,
+            547,
             48,
             48,
             12
@@ -2175,7 +2175,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            542,
+            554,
             66,
             36,
             48
@@ -2376,7 +2376,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            589,
+            601,
             110,
             48,
             12
@@ -2409,7 +2409,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            596,
+            608,
             124,
             36,
             42
@@ -2610,7 +2610,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            589,
+            601,
             48,
             42,
             12
@@ -2643,7 +2643,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            596,
+            608,
             66,
             36,
             48
@@ -2844,7 +2844,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            643,
+            655,
             48,
             58,
             12
@@ -2877,7 +2877,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            650,
+            662,
             66,
             36,
             48
@@ -3062,7 +3062,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            643,
+            655,
             110,
             58,
             12
@@ -3095,7 +3095,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            650,
+            662,
             124,
             36,
             42
@@ -3296,7 +3296,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            721,
+            733,
             48,
             40,
             12
@@ -3329,7 +3329,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            724,
+            736,
             66,
             36,
             48
@@ -3532,7 +3532,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            775,
+            787,
             48,
             48,
             12
@@ -3565,7 +3565,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            778,
+            790,
             66,
             36,
             48
@@ -3750,7 +3750,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            26,
+            38,
             105,
             66,
             12
@@ -3784,7 +3784,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            24,
+            36,
             122,
             66,
             19
@@ -3960,7 +3960,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            747,
+            820,
             119,
             46,
             12
@@ -3993,7 +3993,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            758,
+            832,
             137,
             24,
             24
@@ -4156,7 +4156,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            464,
+            476,
             48,
             50,
             12
@@ -4189,7 +4189,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            471,
+            483,
             66,
             36,
             48
@@ -4390,7 +4390,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            124,
+            136,
             48,
             50,
             12
@@ -4423,7 +4423,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            132,
+            144,
             66,
             36,
             48
