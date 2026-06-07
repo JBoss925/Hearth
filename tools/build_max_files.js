@@ -182,7 +182,7 @@ const blend = (a, b, t) => [
 ];
 const deviceInfo =
   "Hearth is a warmth-first adaptive saturation effect: input conditioning feeds shape controls, parallel Bloom and Flux lanes, a source-aware servo/tone stage, then final blend and level.";
-const deviceWidth = 900;
+const deviceWidth = 850;
 const deviceHeight = 190;
 const visibleXOffset = 12;
 const uiRect = (rect) => [rect[0] + visibleXOffset, rect[1], rect[2], rect[3]];
@@ -333,7 +333,7 @@ const layout = {
   stereoProtect: { label: [643, 110, 58, 12], control: [650, 124, 36, 42] },
   mix: { label: [721, 48, 40, 12], control: [724, 66, 36, 48] },
   output: { label: [775, 48, 48, 12], control: [778, 66, 36, 48] },
-  autoTrim: { label: [808, 119, 46, 12], control: [820, 137, 24, 24] },
+  autoTrim: { label: [747, 119, 46, 12], control: [758, 137, 24, 24] },
 };
 const presentationFor = (param) => {
   const ui = layout[param];
@@ -387,7 +387,7 @@ const addPresentationLabel = ({ text, rect, color = palette.text, size = 9, face
   });
 
 addPresentationPanel({
-  rect: [8, 12, 100, 152],
+  rect: [2, 14, 100, 152],
   color: [0.09, 0.078, 0.066, 1],
   border: withAlpha(palette.heat, 0.42),
   name: "Hearth Overview",
@@ -415,17 +415,17 @@ addPresentationPanel({
   info: "The servo and tone stage adapts to source brightness and roughness, then smooths, restores detail, and protects stereo width.",
 });
 addPresentationPanel({
-  rect: [712, 14, 168, 152],
+  rect: [712, 14, 112, 152],
   color: withAlpha(blend(palette.output, palette.bg, 0.86), 0.96),
   border: palette.text,
   name: "Blend",
   info: "Blend controls set wet/dry balance, output level, and automatic level compensation after processing.",
 });
 
-addPresentationLabel({ text: "HEARTH", rect: [20, 24, 80, 22], color: palette.heat, size: 18, face: 1, just: 0 });
-addPresentationLabel({ text: "warmth-first", rect: [20, 53, 80, 14], color: palette.text, size: 9, just: 0 });
-addPresentationLabel({ text: "adaptive", rect: [20, 68, 80, 14], color: palette.servo, size: 9, just: 0 });
-addPresentationLabel({ text: "saturator", rect: [20, 83, 80, 14], color: palette.bloom, size: 9, just: 0 });
+addPresentationLabel({ text: "HEARTH", rect: [14, 26, 80, 22], color: palette.heat, size: 18, face: 1, just: 0 });
+addPresentationLabel({ text: "warmth-first", rect: [14, 55, 80, 14], color: palette.text, size: 9, just: 0 });
+addPresentationLabel({ text: "adaptive", rect: [14, 70, 80, 14], color: palette.servo, size: 9, just: 0 });
+addPresentationLabel({ text: "saturator", rect: [14, 85, 80, 14], color: palette.bloom, size: 9, just: 0 });
 
 addPresentationLabel({ text: "1  SHAPE", rect: [126, 22, 74, 12], color: palette.heat, size: 9, face: 1, just: 0 });
 addPresentationLabel({ text: "input, emphasis, tube bias", rect: [204, 22, 112, 12], color: palette.muted, size: 8, just: 2 });

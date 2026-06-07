@@ -12,7 +12,7 @@
     "rect": [
       80,
       80,
-      900,
+      850,
       210
     ],
     "bgcolor": [
@@ -42,7 +42,7 @@
     "enablehscroll": 0,
     "enablevscroll": 0,
     "openinpresentation": 1,
-    "devicewidth": 900,
+    "devicewidth": 850,
     "annotation": "Hearth is a warmth-first adaptive saturation effect: input conditioning feeds shape controls, parallel Bloom and Flux lanes, a source-aware servo/tone stage, then final blend and level.",
     "gridonopen": 1,
     "gridsize": [
@@ -64,7 +64,7 @@
           "presentation_rect": [
             -24,
             -24,
-            948,
+            898,
             238
           ],
           "background": 1,
@@ -92,15 +92,15 @@
           "id": "obj-2",
           "maxclass": "panel",
           "patching_rect": [
-            28,
-            512,
+            22,
+            514,
             100,
             152
           ],
           "presentation": 1,
           "presentation_rect": [
-            20,
-            12,
+            14,
+            14,
             100,
             152
           ],
@@ -246,14 +246,14 @@
           "patching_rect": [
             732,
             514,
-            168,
+            112,
             152
           ],
           "presentation": 1,
           "presentation_rect": [
             724,
             14,
-            168,
+            112,
             152
           ],
           "background": 1,
@@ -283,15 +283,15 @@
           "maxclass": "comment",
           "text": "HEARTH",
           "patching_rect": [
-            40,
-            714,
+            34,
+            716,
             80,
             22
           ],
           "presentation": 1,
           "presentation_rect": [
-            32,
-            24,
+            26,
+            26,
             80,
             22
           ],
@@ -312,15 +312,15 @@
           "maxclass": "comment",
           "text": "warmth-first",
           "patching_rect": [
-            40,
-            743,
+            34,
+            745,
             80,
             14
           ],
           "presentation": 1,
           "presentation_rect": [
-            32,
-            53,
+            26,
+            55,
             80,
             14
           ],
@@ -341,15 +341,15 @@
           "maxclass": "comment",
           "text": "adaptive",
           "patching_rect": [
-            40,
-            758,
+            34,
+            760,
             80,
             14
           ],
           "presentation": 1,
           "presentation_rect": [
-            32,
-            68,
+            26,
+            70,
             80,
             14
           ],
@@ -370,15 +370,15 @@
           "maxclass": "comment",
           "text": "saturator",
           "patching_rect": [
-            40,
-            773,
+            34,
+            775,
             80,
             14
           ],
           "presentation": 1,
           "presentation_rect": [
-            32,
-            83,
+            26,
+            85,
             80,
             14
           ],
@@ -745,7 +745,7 @@
         "box": {
           "id": "obj-26",
           "maxclass": "newobj",
-          "text": "loadmess setwidth 900",
+          "text": "loadmess setwidth 850",
           "numinlets": 1,
           "numoutlets": 1,
           "outlettype": [
@@ -3998,7 +3998,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            820,
+            759,
             119,
             46,
             12
@@ -4031,7 +4031,7 @@
           ],
           "presentation": 1,
           "presentation_rect": [
-            832,
+            770,
             137,
             24,
             24
