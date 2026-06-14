@@ -1,0 +1,75 @@
+name: Release AMXD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "releases/*.amxd"
+      - "releases/*.axmd"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Create GitHub release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create releases for newly added devices
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            mapfile -t release_files < <(find releases -maxdepth 1 -type f \( -name "*.amxd" -o -name "*.axmd" \) | sort)
+          else
+            if [[ "$BEFORE_SHA" =~ ^0+$ ]]; then
+              diff_base="$(git hash-object -t tree /dev/null)"
+            else
+              diff_base="$BEFORE_SHA"
+            fi
+
+            mapfile -t release_files < <(
+              git diff --name-only --diff-filter=A "$diff_base" "$AFTER_SHA" -- \
+                "releases/*.amxd" \
+                "releases/*.axmd" |
+              sort
+            )
+          fi
+
+          if [[ "${#release_files[@]}" -eq 0 ]]; then
+            echo "No newly added release files found."
+            exit 0
+          fi
+
+          for release_file in "${release_files[@]}"; do
+            filename="$(basename "$release_file")"
+            release_name="${filename%.*}"
+
+            if [[ "$release_name" =~ ([0-9]+([.][0-9]+)*([-+][A-Za-z0-9.-]+)?) ]]; then
+              tag="v${BASH_REMATCH[1]}"
+            else
+              tag="$(echo "$release_name" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+|-+$//g')"
+            fi
+
+            if gh release view "$tag" >/dev/null 2>&1; then
+              echo "Release $tag already exists; uploading $release_file if needed."
+              gh release upload "$tag" "$release_file" --clobber
+            else
+              echo "Creating release $tag from $release_file."
+              gh release create "$tag" "$release_file" \
+                --title "$release_name" \
+                --notes "Release asset: $filename"
+            fi
+          done
